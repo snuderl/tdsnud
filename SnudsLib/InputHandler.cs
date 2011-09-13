@@ -25,6 +25,8 @@ namespace SnudsLib
         KeyboardState oldKState;
         MouseState mouseState,oldMState;
 
+
+
         public InputHandler(Game game) : base(game) {
             keyboardState = Keyboard.GetState();
             mouseState = Mouse.GetState();
