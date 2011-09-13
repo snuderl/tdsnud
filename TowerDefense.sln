@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefense", "TowerDefense\TowerDefense\TowerDefense.csproj", "{6E74CB83-43EB-4EBF-B6E2-B0A1860E1371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefenseContent", "TowerDefense\TowerDefenseContent\TowerDefenseContent.contentproj", "{1A950123-0C22-40BA-A258-D3D7CB283890}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnudsLib", "SnudsLib\SnudsLib.csproj", "{C0789D92-34E6-4F66-860C-7695D99BFED8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E74CB83-43EB-4EBF-B6E2-B0A1860E1371}.Debug|x86.ActiveCfg = Debug|x86
+		{6E74CB83-43EB-4EBF-B6E2-B0A1860E1371}.Debug|x86.Build.0 = Debug|x86
+		{6E74CB83-43EB-4EBF-B6E2-B0A1860E1371}.Release|x86.ActiveCfg = Release|x86
+		{6E74CB83-43EB-4EBF-B6E2-B0A1860E1371}.Release|x86.Build.0 = Release|x86
+		{1A950123-0C22-40BA-A258-D3D7CB283890}.Debug|x86.ActiveCfg = Debug|x86
+		{1A950123-0C22-40BA-A258-D3D7CB283890}.Release|x86.ActiveCfg = Release|x86
+		{C0789D92-34E6-4F66-860C-7695D99BFED8}.Debug|x86.ActiveCfg = Debug|x86
+		{C0789D92-34E6-4F66-860C-7695D99BFED8}.Debug|x86.Build.0 = Debug|x86
+		{C0789D92-34E6-4F66-860C-7695D99BFED8}.Release|x86.ActiveCfg = Release|x86
+		{C0789D92-34E6-4F66-860C-7695D99BFED8}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

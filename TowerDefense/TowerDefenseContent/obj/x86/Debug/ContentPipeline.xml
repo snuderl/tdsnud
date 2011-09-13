@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Textures\box.png</Source>
+      <Name>Textures\box</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\snuderl\documents\visual studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\box.xnb</Output>
+      <Time>2011-09-06T08:09:36.5207111+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\circle.png</Source>
+      <Name>Textures\circle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\snuderl\documents\visual studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\circle.xnb</Output>
+      <Time>2011-09-05T15:38:10.9164923+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ammo.png</Source>
+      <Name>Textures\ammo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\snuderl\documents\visual studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\ammo.xnb</Output>
+      <Time>2011-09-05T15:39:08.131672+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\font.spritefont</Source>
+      <Name>Textures\font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\snuderl\documents\visual studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\font.xnb</Output>
+      <Time>2011-09-05T18:23:07.403119+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\tiles.png</Source>
+      <Name>Textures\tiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\tiles.xnb</Output>
+      <Time>2011-09-05T19:18:42.8940263+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\build.png</Source>
+      <Name>Textures\build</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\documents\visual studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\build.xnb</Output>
+      <Time>2011-09-06T08:10:46.5447162+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\towerdefense.jpg</Source>
+      <Name>Textures\towerdefense</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\towerdefense.xnb</Output>
+      <Time>2011-09-06T14:35:30.4891769+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Grass_3.png</Source>
+      <Name>Textures\Grass_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\Grass_3.xnb</Output>
+      <Time>2011-09-11T19:07:22.2695334+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\GTD_SPRITES.png</Source>
+      <Name>Textures\GTD_SPRITES</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\GTD_SPRITES.xnb</Output>
+      <Time>2011-09-11T19:12:41.8279343+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\enemy.png</Source>
+      <Name>Textures\enemy</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\enemy.xnb</Output>
+      <Time>2011-09-11T19:49:25.1641496+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\thumb_Fireball.png</Source>
+      <Name>Textures\thumb_Fireball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\thumb_Fireball.xnb</Output>
+      <Time>2011-09-11T23:19:29.1282983+02:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefenseContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefenseContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2011-08-20T18:22:33.0023725+02:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

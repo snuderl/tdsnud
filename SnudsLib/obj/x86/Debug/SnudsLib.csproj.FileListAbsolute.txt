@@ -1,0 +1,6 @@
+C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\SnudsLib\bin\x86\Debug\SnudsLib.dll
+C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\SnudsLib\bin\x86\Debug\SnudsLib.pdb
+C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\SnudsLib\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\SnudsLib\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\SnudsLib\obj\x86\Debug\SnudsLib.dll
+C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\SnudsLib\obj\x86\Debug\SnudsLib.pdb
