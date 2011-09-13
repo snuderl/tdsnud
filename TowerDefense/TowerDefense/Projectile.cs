@@ -37,17 +37,22 @@ namespace TowerDefense
 
         public bool walkable;
 
-        public Projectile(int speed, int damage, Sprite s)
+        public Projectile(int speed, Sprite s)
         {
             this.speed = speed;
-            this.damage = damage;
             this.sprite = (Sprite)s.Clone();
+        }
+
+
+        public void Update(GameTime gameTime)
+        {
+            sprite.Update(gameTime);
         }
 
 
         public object Clone()
         {
-            Projectile s = new Projectile(speed, damage, (Sprite)sprite.Clone());
+            Projectile s = new Projectile(speed, (Sprite)sprite.Clone());
             return s;
         }
     }

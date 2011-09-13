@@ -1,0 +1,51 @@
+﻿<TowerDefence>
+  <Sprites>
+    <!-- Projectiles-->
+    <Sprite id="1">
+      <resourceName>thumb_Fireball</resourceName>
+    </Sprite>
+    <!-- Towers-->
+    <Sprite id="2">
+      <resourceName>GTD_SPRITES</resourceName>
+      <width>84</width>
+      <height>60</height>
+      <positionX>278</positionX>
+      <positionY>0</positionY>
+    </Sprite>
+    <!--Enemies-->
+    <Sprite id="3" animated="true">
+      <resourceName>enemy</resourceName>
+      <width>32</width>
+      <height>32</height>
+      <spritesPerSecond>3</spritesPerSecond>
+    </Sprite>
+  </Sprites>
+  <Projectiles>
+    <Projectile id="1">
+      <speed>100</speed>
+      <Sprite>1</Sprite>
+    </Projectile>
+  </Projectiles>
+  <Towers>
+    <Tower id="1">
+      <name>Test</name>
+      <range>100</range>
+      <damage>100</damage>
+      <shootSpeed>1</shootSpeed>
+      <walkable>false</walkable>
+      <cost>500</cost>
+      <Projectile>1</Projectile>
+      <Sprite>2</Sprite>
+    </Tower>
+  </Towers>
+  <Enemies>
+    <Enemy id="1">
+    <health>100</health>
+    <name>Creep1</name>
+    <Sprite>2</Sprite>
+    <drawSize>32</drawSize>
+    <rotation>0</rotation>
+    <speed>100</speed>
+    </Enemy>
+  </Enemies>
+</TowerDefence>

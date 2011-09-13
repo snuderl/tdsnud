@@ -51,9 +51,10 @@ namespace TowerDefense
         float totalElapsed;
         float elapsedSinceSpawn;
         int spawned;
+        Vector2 spawnPosition;
         Enemy e;
 
-        public SpawnPoint(float spawnInterval, float startAfterSeconds, int numEnemies, Enemy e)
+        public SpawnPoint(Vector2 spawnPosition, float spawnInterval, float startAfterSeconds, int numEnemies, Enemy e)
         {
             this.spawnInterval = spawnInterval;
             spawned = 0;
@@ -62,6 +63,7 @@ namespace TowerDefense
             elapsedSinceSpawn = spawnInterval+0.000001f;
             totalElapsed = 0;
             this.e = e;
+            this.spawnPosition = spawnPosition;
         }
 
         public void Update(float elapsed, List<Enemy> enemies)
@@ -74,7 +76,9 @@ namespace TowerDefense
                     elapsedSinceSpawn += elapsed;
                     if (elapsedSinceSpawn > spawnInterval)
                     {
-                        enemies.Add((Enemy)e.Clone());
+                        Enemy creating = (Enemy)e.Clone();
+                        creating.position = spawnPosition;
+                        enemies.Add(creating);
                         elapsedSinceSpawn -= spawnInterval;
                         spawned++;
                     }

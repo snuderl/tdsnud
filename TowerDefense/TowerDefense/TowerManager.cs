@@ -31,6 +31,7 @@ namespace TowerDefense
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             foreach (Tower t in towers)
             {
+                t.Update(gameTime);
                 t.sinceLastShot += elapsed;
                 if (t.sinceLastShot >= t.shootSpeed)
                 {
@@ -42,6 +43,7 @@ namespace TowerDefense
                             Projectile s = (Projectile)t.projectile.Clone();
                             s.position = t.position;
                             s.target = e;
+                            s.damage = t.damage;
                             game.Level.ProjectileManager.shoots.Add(s);
                             t.sinceLastShot = 0;
                             break;
@@ -53,15 +55,15 @@ namespace TowerDefense
         }
 
         public void Load(){
-            Projectile s = new Projectile(500, 10, new Sprite(game.projectile, game.projectile.Width,game.projectile.Height, Vector2.Zero));
-            Tower t = new Tower(new Vector2(0,0), 300, 1, false, "bigBad", 48, new Sprite(game.tower, 84, 60, new Vector2(276, 0)), 500, s);
+            Projectile s = game.Level.projectileDict[1];
+            Tower t = new Tower(new Vector2(0,0), 300, 1, false, "bigBad", 48, game.Level.spriteDict[2], 500, s, 10);
             towerList.Add(t);
-            t = new Tower(new Vector2(0, 0), 100, 0.1f, false, "Fastshoting", 48, new Sprite(game.tower, 84, 60, new Vector2(276, 0)), 600,s);
+            t = new Tower(new Vector2(0, 0), 100, 0.1f, false, "Fastshoting", 48, game.Level.spriteDict[2], 600, s, 10);
             towerList.Add(t);
-            t = new Tower(new Vector2(0, 0), 600, 0.5f, false, "Kamikaze", 48, new Sprite(game.tower, 84, 60, new Vector2(276, 0)), 1000, s);
+            t = new Tower(new Vector2(0, 0), 600, 0.5f, false, "Kamikaze", 48, game.Level.spriteDict[2], 1000, s, 10);
             towerList.Add(t);
-            s = new Projectile(200, 400, new Sprite(game.projectile, game.projectile.Width, game.projectile.Height, Vector2.Zero));
-            t = new Tower(new Vector2(0, 0), 64, 5f, true, "Walking", 48, new Sprite(game.trap, 39, 39, new Vector2(0, 0)), 1000, s);
+            s = new Projectile(200, game.Level.spriteDict[1]);
+            t = new Tower(new Vector2(0, 0), 64, 5f, true, "Walking", 48, new Sprite(game.trap, 39, 39, new Vector2(0, 0)), 1000, s, 400);
             towerList.Add(t);
         }
 

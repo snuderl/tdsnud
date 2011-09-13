@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TowerDefence>
+  <Sprites>
+    <Sprite id="1">
+      <resourceName>projectile</resourceName>
+    </Sprite>
+    <Sprite id="2">
+      <resourceName>GTD_SPRITES</resourceName>
+      <width>84</width>
+      <height>60</height>
+    </Sprite>
+  </Sprites>
+  <Projectiles>
+    <Projectile id="1">
+      <speed>100</speed>
+      <sprite>1</sprite>
+    </Projectile>
+  </Projectiles>
+  <Towers>
+    <Tower id="1">
+      <name>Test</name>
+      <range>100</range>
+      <damage>100</damage>
+      <shootSpeed>1</shootSpeed>
+      <walkable>false</walkable>
+      <cost>500</cost>
+      <Projectile>1</Projectile>
+      <Sprite>2</Sprite>
+    </Tower>
+  </Towers>  
+</TowerDefence>

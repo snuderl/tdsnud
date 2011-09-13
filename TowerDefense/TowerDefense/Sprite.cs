@@ -19,7 +19,7 @@ namespace TowerDefense
         List<Rectangle> animations;
         //int numberOfSprites;
         //int startSprite, endSprite;
-        int numberOfSprites, currentSprite;
+        int currentSprite;
         float sinceLastUpdate, spritesPerSecond;
         float updateInterval;
 
@@ -36,7 +36,7 @@ namespace TowerDefense
 
 
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             sinceLastUpdate += elapsed;
@@ -78,7 +78,6 @@ namespace TowerDefense
     {
 
         protected int width, height;
-        Vector2 startPos;
         public Sprite(Texture2D text, int width, int height, Vector2 startPos)
         {
             this.text = text;
@@ -90,6 +89,9 @@ namespace TowerDefense
         private Rectangle sourceRec;
         public virtual Rectangle SourceRec { get { return sourceRec; } }
         public Texture2D Texture { get { return text; } }
+
+        public virtual void Update(GameTime gameTime)
+        { }
 
         public virtual object Clone()
         {

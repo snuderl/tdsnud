@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections;
+using System.Xml;
 using SnudsLib;
 
 namespace TowerDefense
@@ -21,7 +22,6 @@ namespace TowerDefense
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public Texture2D enemy;
         public Texture2D boxT;
         public Texture2D circleT;
         public Texture2D ammoT;
@@ -34,14 +34,10 @@ namespace TowerDefense
         IGui selected;
         GridTexture grid;
         public Texture2D grass;
-        public Texture2D tower;
-        public Texture2D projectile;
         private Level level;
         public Level Level { get { return level; } }
-        private InputHandler input;
         public Tower Building { get { return level.towerManager.towerList[buildingTower]; } }
         int buildingTower;
-        public Class1 inputcheck;
         public Texture2D trap;
 
         public enum Mode
@@ -49,8 +45,6 @@ namespace TowerDefense
             normal, build
         }
         Mode mode = Mode.normal;
-
-
 
 
         public TowerDefense()
@@ -61,15 +55,15 @@ namespace TowerDefense
             camera = new Vector2(0, 0);
             level = new Level(this,48, 25, 25, new Point(0, 2), new Point(8, 9), 10);
             Components.Add(level);
-            input = new InputHandler(this);
-            Components.Add(input);
-            Services.AddService(typeof(IInputHandler), input);
            
             //Components.Add(gui);
             IsMouseVisible = true;
 
             grid = new GridTexture(this, 48);
             Components.Add(grid);
+
+
+           
         }
 
         /// <summary>
@@ -99,13 +93,11 @@ namespace TowerDefense
             tiles = Content.Load<Texture2D>(@"Textures/Tiles");
             build = Content.Load<Texture2D>(@"Textures/build");
             grass = Content.Load<Texture2D>(@"Textures/Grass_3");
-            tower = Content.Load<Texture2D>(@"Textures/GTD_SPRITES");
-            enemy = Content.Load<Texture2D>(@"Textures/enemy");
-            projectile = Content.Load<Texture2D>(@"Textures/thumb_Fireball");
             trap = Content.Load<Texture2D>(@"Textures/TradPlat");
             // TODO: use this.Content to load your game content here
-            level.Loaded();
+            level.Loaded(Content);
             buildingTower = 0;
+
 
         }
 

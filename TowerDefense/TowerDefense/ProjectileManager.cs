@@ -32,6 +32,7 @@ namespace TowerDefense
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             foreach (Projectile s in shoots)
             {
+                s.Update(gameTime);
                 double radius = Math.Sqrt(Math.Pow(s.position.X - s.target.position.X, 2) + Math.Pow(s.position.Y - s.target.position.Y, 2));
                 if (radius < 10)
                 {

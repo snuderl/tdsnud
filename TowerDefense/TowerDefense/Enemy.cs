@@ -20,7 +20,7 @@ namespace TowerDefense
         public int health;
         string name = "EvilCreep";
         public string Name { get { return name; } set { this.name = value; } }
-        public AnimatedSprite animated;
+        public Sprite animated;
         public int drawSize = 32;
         public int speed;
         public float rotation;
@@ -53,12 +53,11 @@ namespace TowerDefense
             sb.DrawString(sf, "Health:  " + this.health, new Vector2(640, 450), Color.White);
         }
 
-        public Enemy(Vector2 position, int health, String name, AnimatedSprite ani, int drawSize,float rotation, int speed)
+        public Enemy(int health, String name, Sprite ani, int drawSize, float rotation, int speed)
         {
-            this.position = position;
             this.health = health;
             this.name=name;
-            this.animated=(AnimatedSprite)ani.Clone();
+            this.animated=(Sprite)ani.Clone();
             this.drawSize=drawSize;
             this.rotation=rotation;
             this.speed = speed;
@@ -66,7 +65,7 @@ namespace TowerDefense
 
         public object Clone()
         {
-            Enemy e = new Enemy(position, health, name, (AnimatedSprite)animated.Clone(), drawSize, rotation, speed);
+            Enemy e = new Enemy(health, name, (Sprite)animated.Clone(), drawSize, 0, speed);
             return e;
         }
     }

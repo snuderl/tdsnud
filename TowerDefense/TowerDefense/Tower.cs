@@ -51,10 +51,15 @@ namespace TowerDefense
             sb.DrawString(sf, "Range:  " + this.range, new Vector2(550, 470), Color.White);
         }
 
+        public void Update(GameTime gameTime)
+        {
+            s.Update(gameTime);
+        }
+
         public Rectangle DestinationRectangle { get { return new Rectangle((int)position.X, (int)position.Y, cellSize, cellSize); } }
 
 
-        public Tower(Vector2 position, int range, float shootSpeed, bool walkable, String name, int cellSize, Sprite s, int cost, Projectile projectile)
+        public Tower(Vector2 position, int range, float shootSpeed, bool walkable, String name, int cellSize, Sprite s, int cost, Projectile projectile, int damage)
         {
             this.position = position;
             this.range = range;
@@ -65,12 +70,13 @@ namespace TowerDefense
             this.s = (Sprite)s.Clone();
             this.cost = cost;
             this.projectile = (Projectile)projectile.Clone();
+            this.damage = damage;
         }
 
 
         public object Clone()
         {
-            Tower t = new Tower(position, range, shootSpeed, walkable, name, cellSize, (Sprite)s.Clone(), cost, (Projectile)projectile.Clone());
+            Tower t = new Tower(position, range, shootSpeed, walkable, name, cellSize, s, cost, (Projectile)projectile.Clone(), damage);
             return t;
         }
     }

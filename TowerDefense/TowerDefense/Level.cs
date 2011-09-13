@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections;
 using SnudsLib;
+using System.Xml;
 
 namespace TowerDefense
 {
@@ -42,6 +43,14 @@ namespace TowerDefense
         private ProjectileManager projectileManager;
         public ProjectileManager ProjectileManager { get { return projectileManager; } }
 
+
+
+        public Dictionary<int, Sprite> spriteDict;
+        public Dictionary<int, Projectile> projectileDict;
+        public Dictionary<int, Tower> towerDict;
+        public Dictionary<int, Enemy> enemyDict;
+        public Dictionary<int, SpawnPoint> spawnPointDict;
+
         public Level(TowerDefense game, int cellSize, int rows, int columns, Point start, Point end, int lives) : base(game)
         {
             this.cellSize = cellSize;
@@ -63,17 +72,95 @@ namespace TowerDefense
 
 
             pathfinding = Pathfinding.createPath(IntObjectMap, Start, End);
+
+
+            spriteDict = new Dictionary<int, Sprite>();
+            towerDict = new Dictionary<int, Tower>();
+            projectileDict = new Dictionary<int, Projectile>();
+            enemyDict = new Dictionary<int, Enemy>();
+            spawnPointDict = new Dictionary<int, SpawnPoint>();
         }
 
-        public void Loaded()
+        public void Loaded(ContentManager content)
         {
 
 
-            SpawnPoint sp = new SpawnPoint(3, 1, 5, new Enemy(new Vector2(0,300), 100, "Creep1", new AnimatedSprite(game.enemy, 32, 32, 3), 32, 0, 100));
-            spawner.AddSpawnPoint(sp);
-            sp = new SpawnPoint(3, 1, 5, new Enemy(new Vector2(0, 100), 100, "Creep1", new AnimatedSprite(game.enemy, 32, 32, 3), 32, 0, 100));
-            spawner.AddSpawnPoint(sp);
+            XmlDocument doc = new XmlDocument();
+            doc.Load("test.xml");
+            XmlNode towerDefenceNode = doc["TowerDefence"];
+            XmlNode spritesNode = towerDefenceNode["Sprites"];
+
+            Texture2D tmp;
+            foreach (XmlNode node in spritesNode.SelectNodes("Sprite"))
+            {
+                int id = int.Parse(node.Attributes["id"].InnerText);
+                bool animated = node.Attributes["animated"] == null ? false : bool.Parse(node.Attributes["animated"].InnerText);
+                string filename = node["resourceName"].InnerText;
+                tmp = content.Load<Texture2D>(@"Textures/" + filename);
+                int width = node["width"] == null ? tmp.Width : int.Parse(node["width"].InnerText);
+                int height = node["height"] == null ? tmp.Height : int.Parse(node["height"].InnerText);
+                Sprite s;
+                if (animated)
+                {
+                    float spritesPerSecond = float.Parse(node["spritesPerSecond"].InnerText);
+                    s=new AnimatedSprite(tmp, width,height, spritesPerSecond);
+
+                }
+                else
+                {
+                    int positionX = node["positionX"] == null ? 0 : int.Parse(node["positionX"].InnerText);
+                    int positionY = node["positionY"] == null ? 0 : int.Parse(node["positionY"].InnerText);
+                    Vector2 position = new Vector2(positionX, positionY);
+                    s = new Sprite(tmp, width, height, position);
+                }
+                spriteDict.Add(id, s);
+            }
+            foreach (XmlNode node in towerDefenceNode["Projectiles"].SelectNodes("Projectile"))
+            {
+                int id = int.Parse(node.Attributes["id"].InnerText);
+                int speed = int.Parse(node["speed"].InnerText);
+                int spriteid = int.Parse(node["Sprite"].InnerText);
+                Sprite s = spriteDict[spriteid];
+                Projectile proj = new Projectile(speed, s);
+                projectileDict.Add(id, proj);
+            }
+
             towerManager.Load();
+            foreach (XmlNode node in towerDefenceNode["Towers"].SelectNodes("Tower"))
+            {
+                int id = int.Parse(node.Attributes["id"].InnerText);
+                String name = node["name"].InnerText;
+                int spriteid = int.Parse(node["Sprite"].InnerText);
+                int projid = int.Parse(node["Projectile"].InnerText);
+                int range = int.Parse(node["range"].InnerText);
+                int damage = int.Parse(node["damage"].InnerText);
+                float shootspeed = float.Parse(node["shootSpeed"].InnerText);
+                bool walkable = bool.Parse(node["walkable"].InnerText);
+                int cost = int.Parse(node["cost"].InnerText);
+                Sprite s = spriteDict[spriteid];
+                Projectile proj = projectileDict[projid];
+                Tower tow = new Tower(Vector2.Zero, range, shootspeed, walkable, name, 48, s, cost, proj, damage);
+                towerManager.towerList.Add(tow);
+            }
+            foreach (XmlNode node in towerDefenceNode["Enemies"].SelectNodes("Enemy"))
+            {
+                int id = int.Parse(node.Attributes["id"].InnerText);
+                String name = node["name"].InnerText;
+                int spriteid = int.Parse(node["Sprite"].InnerText);
+                int health = int.Parse(node["health"].InnerText);
+                int speed = int.Parse(node["speed"].InnerText);
+                float rotation = float.Parse(node["rotation"].InnerText);
+                int drawSize = int.Parse(node["rotation"].InnerText);
+                Sprite s = spriteDict[spriteid];
+                Enemy e = new Enemy(health, name, s, drawSize, rotation, speed);
+                enemyDict.Add(id, e);
+            }
+
+
+            SpawnPoint sp = new SpawnPoint(new Vector2(0, 300), 3, 1, 5, new Enemy(300, "Creep1", spriteDict[3], 32, 0, 100));
+            spawner.AddSpawnPoint(sp);
+            sp = new SpawnPoint(new Vector2(0, 100), 3, 1, 5, new Enemy(100, "Creep1", spriteDict[3], 32, 0, 100));
+            spawner.AddSpawnPoint(sp);
         }
 
         private void InitializeMap(int rows, int columns)

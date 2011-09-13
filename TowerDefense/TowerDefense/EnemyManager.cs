@@ -18,7 +18,6 @@ namespace TowerDefense
         TowerDefense game;
         public List<Enemy> enemies;
 
-        float sinceLastSpawn = 0;
         public EnemyManager(TowerDefense game)
             : base(game)
         {
