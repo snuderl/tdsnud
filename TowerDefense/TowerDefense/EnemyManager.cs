@@ -45,7 +45,7 @@ namespace TowerDefense
                 {
                     Vector2 direction = new Vector2(p.parent.x * game.Level.CellSize + game.Level.CellSize / 2, p.parent.y * game.Level.CellSize + game.Level.CellSize / 2) - (e.position);
                     direction.Normalize();
-                    e.position += direction * 50 * elapsed;
+                    e.position += direction * e.speed * elapsed;
                     e.rotation = MathFunctions.angleFromX(direction);
                     if (direction.X < 0 || direction.Y < 0)
                     {
@@ -53,10 +53,12 @@ namespace TowerDefense
                     }
                 }
                 e.animated.Update(gameTime);
+
             }
 
-
             int dead = enemies.RemoveAll(e => e.health <= 0);
+            int finished = enemies.RemoveAll(e => e.CellCoords == game.Level.End);
+            game.Level.Lives -= finished;
             game.score += dead * 100;
             game.Level.money += dead * 100;
             base.Update(gameTime);
@@ -69,6 +71,7 @@ namespace TowerDefense
                 spriteBatch.Draw(e.Text, e.destinationRectangle, e.SourceRect, Color.White, e.rotation, e.origin, SpriteEffects.None, 1);
             }
         }
+
 
 
         public Boolean isEnemyOnIt(Point p)

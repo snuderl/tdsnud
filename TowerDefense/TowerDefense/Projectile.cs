@@ -12,14 +12,16 @@ using System.Collections;
 using SnudsLib;
 namespace TowerDefense
 {
-    public class Shoot
+    public class Projectile : ICloneable
     {
         public Vector2 position;
         public Enemy target;
         public bool active = true;
-        public Sprite s;
+        public int speed;
+        public int damage;
+        public Sprite sprite;
         public Rectangle destinationRectangle { get { return new Rectangle((int)position.X, (int)position.Y, 15, 15); } }
-        public virtual Vector2 origin { get { return new Vector2(s.Texture.Width / 2, s.Texture.Height / 2); } }
+        public virtual Vector2 origin { get { return new Vector2(sprite.Texture.Width / 2, sprite.Texture.Height / 2); } }
         public float rotation;
         public Vector2 Position
         {
@@ -34,5 +36,19 @@ namespace TowerDefense
         }
 
         public bool walkable;
+
+        public Projectile(int speed, int damage, Sprite s)
+        {
+            this.speed = speed;
+            this.damage = damage;
+            this.sprite = (Sprite)s.Clone();
+        }
+
+
+        public object Clone()
+        {
+            Projectile s = new Projectile(speed, damage, (Sprite)sprite.Clone());
+            return s;
+        }
     }
 }

@@ -117,26 +117,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SnudsLib.dll" size="8704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SnudsLib.dll" size="9728">
       <assemblyIdentity name="SnudsLib" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>GjC8K9oLXnmcObSAaIYqO6V4/Vc=</dsig:DigestValue>
+        <dsig:DigestValue>nI6TS64Q8gfik6PSC5ZqCxdl5m0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="27648">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="29184">
       <assemblyIdentity name="TowerDefense" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hY59bwt2tZ952XDAnXgHdqQ7nQA=</dsig:DigestValue>
+        <dsig:DigestValue>/PRuxuCDKtWCgzslu/gSE12A4EQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -237,6 +237,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>REmYPvfXYWFpKZnVNUP5vTfoHhM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Textures\TradPlat.xnb" size="136191">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>fBJ7/UUkaDUGiOYYEIWGaQUr3cs=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Game.ico" size="4286">

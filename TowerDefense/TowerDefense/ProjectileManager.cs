@@ -18,24 +18,24 @@ namespace TowerDefense
     {
 
         private TowerDefense game;
-        public List<Shoot> shoots;
+        public List<Projectile> shoots;
         public ProjectileManager(TowerDefense game)
             : base(game)
         {
             this.game = game;
-            shoots = new List<Shoot>();
+            shoots = new List<Projectile>();
         }
 
         public override void Update(GameTime gameTime)
         {
 
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            foreach (Shoot s in shoots)
+            foreach (Projectile s in shoots)
             {
                 double radius = Math.Sqrt(Math.Pow(s.position.X - s.target.position.X, 2) + Math.Pow(s.position.Y - s.target.position.Y, 2));
                 if (radius < 10)
                 {
-                    s.target.health -= 20;
+                    s.target.health -= s.damage;
                     s.active = false;
                 }
                 else
@@ -43,7 +43,7 @@ namespace TowerDefense
                     Vector2 direction = (s.target.position - s.position);
                     direction.Normalize();
                     s.rotation = MathFunctions.angleFromX(direction);
-                    s.position += direction * elapsed * 300;
+                    s.position += direction * elapsed * s.speed;
                 }
             }
             shoots.RemoveAll(s => s.active == false);
@@ -52,9 +52,9 @@ namespace TowerDefense
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            foreach (Shoot s in shoots)
+            foreach (Projectile s in shoots)
             {
-                spriteBatch.Draw(s.s.Texture, s.destinationRectangle, s.s.SourceRec, Color.White, s.rotation, s.origin, SpriteEffects.None, 1);
+                spriteBatch.Draw(s.sprite.Texture, s.destinationRectangle, s.sprite.SourceRec, Color.White, s.rotation, s.origin, SpriteEffects.None, 1);
             }
         }
     }

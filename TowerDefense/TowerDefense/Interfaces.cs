@@ -28,4 +28,18 @@ namespace TowerDefense
         }
     }
 
+    public class End : IObject
+    {
+
+        public Vector2 Position
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool Walkable
+        {
+            get { return true; }
+        }
+    }
+
 }

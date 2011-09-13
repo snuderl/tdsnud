@@ -58,7 +58,7 @@ namespace TowerDefense
             this.position = position;
             this.health = health;
             this.name=name;
-            this.animated=ani;
+            this.animated=(AnimatedSprite)ani.Clone();
             this.drawSize=drawSize;
             this.rotation=rotation;
             this.speed = speed;

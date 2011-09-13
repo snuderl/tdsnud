@@ -29,6 +29,7 @@ namespace TowerDefense
         private Point end;
         public Point Start { get { return start; } }
         public Point End { get { return end; } }
+        public int Lives { get; set; }
         private Spawner spawner;
 
         public Pathfinding pathfinding;
@@ -41,13 +42,14 @@ namespace TowerDefense
         private ProjectileManager projectileManager;
         public ProjectileManager ProjectileManager { get { return projectileManager; } }
 
-        public Level(TowerDefense game, int cellSize, int rows, int columns, Point start, Point end) : base(game)
+        public Level(TowerDefense game, int cellSize, int rows, int columns, Point start, Point end, int lives) : base(game)
         {
             this.cellSize = cellSize;
             this.start = start;
             this.end = end;
             InitializeMap(rows, columns);
             this.game = game;
+            this.Lives = lives;
 
             towerManager = new TowerManager(game);
 
@@ -91,6 +93,7 @@ namespace TowerDefense
                 }
                 map[i] = tmp;
             }
+            objectMap[end.Y][end.X] = new End();
         }
 
 
@@ -132,9 +135,7 @@ namespace TowerDefense
             ProjectileManager.Draw(gameTime, spriteBatch);
 
 
-            spriteBatch.DrawString(game.sf, "Score: " + game.score + "!", new Vector2(300, 0), Color.White);
-            spriteBatch.DrawString(game.sf, "X: " + Mouse.GetState().X + " Y: " + Mouse.GetState().Y, new Vector2(0, 0), Color.White);
-            spriteBatch.DrawString(game.sf, "Money: " +money, new Vector2(150, 0), Color.White);
+            spriteBatch.DrawString(game.sf, "X: " + Mouse.GetState().X + " Y: "+"  Money: " +money+"  Score: " + game.score + "!"+ "  Lives: "+Lives, new Vector2(0, 0), Color.White);
         }
 
     }

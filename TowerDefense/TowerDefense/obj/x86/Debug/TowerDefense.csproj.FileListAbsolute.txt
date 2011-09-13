@@ -25,3 +25,4 @@ C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense
 C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\TowerDefense.application
 C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\obj\x86\Debug\TowerDefense.exe.manifest
 C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\obj\x86\Debug\TowerDefense.application
+C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\TradPlat.xnb

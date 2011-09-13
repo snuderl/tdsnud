@@ -13,9 +13,6 @@ using SnudsLib;
 
 namespace TowerDefense
 {
-  
-  
-   
 
     /// <summary>
     /// This is the main type for your game
@@ -33,6 +30,7 @@ namespace TowerDefense
         public SpriteFont sf;
         public Texture2D tiles;
         public Texture2D build;
+        float sinceTowerChange = 0;
         IGui selected;
         GridTexture grid;
         public Texture2D grass;
@@ -41,7 +39,11 @@ namespace TowerDefense
         private Level level;
         public Level Level { get { return level; } }
         private InputHandler input;
+        public Tower Building { get { return level.towerManager.towerList[buildingTower]; } }
         int buildingTower;
+        public Class1 inputcheck;
+        public Texture2D trap;
+
         public enum Mode
         {
             normal, build
@@ -57,7 +59,7 @@ namespace TowerDefense
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 600;
             camera = new Vector2(0, 0);
-            level = new Level(this,48, 25, 25, new Point(0, 2), new Point(8, 9));
+            level = new Level(this,48, 25, 25, new Point(0, 2), new Point(8, 9), 10);
             Components.Add(level);
             input = new InputHandler(this);
             Components.Add(input);
@@ -100,6 +102,7 @@ namespace TowerDefense
             tower = Content.Load<Texture2D>(@"Textures/GTD_SPRITES");
             enemy = Content.Load<Texture2D>(@"Textures/enemy");
             projectile = Content.Load<Texture2D>(@"Textures/thumb_Fireball");
+            trap = Content.Load<Texture2D>(@"Textures/TradPlat");
             // TODO: use this.Content to load your game content here
             level.Loaded();
             buildingTower = 0;
@@ -128,6 +131,7 @@ namespace TowerDefense
                 this.Exit();
 
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            sinceTowerChange += elapsed;
             KeyboardState ks = Keyboard.GetState();
             MouseState ms = Mouse.GetState();
             if (mode == Mode.build)
@@ -142,11 +146,13 @@ namespace TowerDefense
                         Level.towerManager.Build(new Vector2(x, y), level.towerManager.towerList[buildingTower]);
                     }
                 }
-                if (ks.IsKeyDown(Keys.Add))
+                if (sinceTowerChange > 0.1f && ks.IsKeyDown(Keys.Add))
                 {
                     buildingTower++;
                     if (buildingTower == level.towerManager.towerList.Count)
                         buildingTower = 0;
+
+                    sinceTowerChange = 0;
                 }
             }
             else if (mode == Mode.normal && ButtonState.Pressed == ms.LeftButton)
@@ -219,15 +225,19 @@ namespace TowerDefense
                 yCoord = y / 48;
                 if (!(xCoord >= level.ObjectMap[0].Length || xCoord < 0 || yCoord < 0 || yCoord >= level.ObjectMap.Length))
                 {
-                    if (level.ObjectMap[yCoord][xCoord] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && level.towerManager.towerList[buildingTower].cost >= 500)
+                    Rectangle dest = Building.DestinationRectangle;
+                    dest.Offset(x, y);
+                    Color c = Color.White;
+                    if (level.ObjectMap[yCoord][xCoord] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && level.towerManager.towerList[buildingTower].cost <= level.money)
                     {
-                        spriteBatch.Draw(build, new Vector2(x, y), Color.White);
+                        c = Color.LightSeaGreen;
                     }
                     else
                     {
-
-                        spriteBatch.Draw(build, new Vector2(x, y), Color.Red);
+                        c = Color.Red;
                     }
+
+                    spriteBatch.Draw(Building.s.Texture, dest, Building.s.SourceRec, c * 0.3f);
                 }
                 spriteBatch.DrawString(sf, "Name: " + level.towerManager.towerList[buildingTower].Name + "\nCost: " + level.towerManager.towerList[buildingTower].cost + "\nRange: " + level.towerManager.towerList[buildingTower].range + "\nAtackSpeed: " + level.towerManager.towerList[buildingTower].shootSpeed, new Vector2(0, 400), Color.White);
             }

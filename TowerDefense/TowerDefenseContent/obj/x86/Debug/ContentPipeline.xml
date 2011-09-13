@@ -100,6 +100,15 @@
       <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\thumb_Fireball.xnb</Output>
       <Time>2011-09-11T23:19:29.1282983+02:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\TradPlat.bmp</Source>
+      <Name>Textures\TradPlat</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\TradPlat.xnb</Output>
+      <Time>2011-09-13T14:28:26.0472956+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
