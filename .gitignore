@@ -29,3 +29,9 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+SnudsLib/obj/x86/Debug/SnudsLib.dll
+SnudsLib/obj/x86/Debug/
+SnudsLib/bin/
+SnudsLib/bin/x86/
+TowerDefense/TowerDefense/bin/
+TowerDefense/TowerDefenseContent/obj/
