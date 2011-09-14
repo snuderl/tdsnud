@@ -24,6 +24,8 @@ namespace TowerDefense
         SpriteBatch spriteBatch;
         public Texture2D boxT;
         public Texture2D circleT;
+        public int Lives { get; set; }
+        public int money = 2000;
         public Texture2D ammoT;
         Vector2 camera;
         public int score = 0;
@@ -36,9 +38,10 @@ namespace TowerDefense
         public Texture2D grass;
         private Level level;
         public Level Level { get { return level; } }
-        public Tower Building { get { return level.towerManager.towerList[buildingTower]; } }
+        public Tower Building { get {  return level.towerManager.towerList[buildingTower]; } }
         int buildingTower;
         public Texture2D trap;
+        public Loader loader;
 
         public enum Mode
         {
@@ -47,15 +50,21 @@ namespace TowerDefense
         Mode mode = Mode.normal;
 
 
+       
+
+
+
         public TowerDefense()
         {
+
+            Lives = 10;
+            money = 2000;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 600;
             camera = new Vector2(0, 0);
-            level = new Level(this,48, 25, 25, new Point(0, 2), new Point(8, 9), 10);
             Components.Add(level);
-           
+
             //Components.Add(gui);
             IsMouseVisible = true;
 
@@ -63,7 +72,6 @@ namespace TowerDefense
             Components.Add(grid);
 
 
-           
         }
 
         /// <summary>
@@ -95,8 +103,13 @@ namespace TowerDefense
             grass = Content.Load<Texture2D>(@"Textures/Grass_3");
             trap = Content.Load<Texture2D>(@"Textures/TradPlat");
             // TODO: use this.Content to load your game content here
-            level.Loaded(Content);
             buildingTower = 0;
+            XmlDocument doc = new XmlDocument();
+            doc.Load("test.xml");
+            loader = new Loader(doc, Content, this);
+
+            Components.Add(loader.levelDict[1]);
+            level = loader.levelDict[1];
 
 
         }
@@ -122,6 +135,11 @@ namespace TowerDefense
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            if (level.finished == true)
+            {
+                level.Pause();
+            }
+
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             sinceTowerChange += elapsed;
             KeyboardState ks = Keyboard.GetState();
@@ -133,7 +151,7 @@ namespace TowerDefense
                     int x, y;
                     x = ms.X - (ms.X % 48);
                     y = ms.Y - (ms.Y % 48);
-                    if (level.ObjectMap[y / 48][x / 48] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && level.money >= level.towerManager.towerList[buildingTower].cost)
+                    if (level.ObjectMap[y / 48][x / 48] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && money >= level.towerManager.towerList[buildingTower].cost)
                     {
                         Level.towerManager.Build(new Vector2(x, y), level.towerManager.towerList[buildingTower]);
                     }
@@ -220,7 +238,7 @@ namespace TowerDefense
                     Rectangle dest = Building.DestinationRectangle;
                     dest.Offset(x, y);
                     Color c = Color.White;
-                    if (level.ObjectMap[yCoord][xCoord] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && level.towerManager.towerList[buildingTower].cost <= level.money)
+                    if (level.ObjectMap[yCoord][xCoord] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && level.towerManager.towerList[buildingTower].cost <= money)
                     {
                         c = Color.LightSeaGreen;
                     }

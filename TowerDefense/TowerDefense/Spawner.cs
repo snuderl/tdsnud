@@ -18,39 +18,47 @@ namespace TowerDefense
         List<SpawnPoint> spawns;
         TowerDefense game;
         List<Enemy> enemies;
-        public Spawner(TowerDefense game, List<Enemy> enemies)
+        public bool finished = false;
+        public Spawner(TowerDefense game, List<Enemy> enemies, List<SpawnPoint> spawnPoints)
             : base(game)
         {
             this.game = game;
             this.enemies = enemies;
-            spawns = new List<SpawnPoint>();
+            spawns = spawnPoints;
+            if (spawnPoints.Count == 0)
+            {
+                finished = true;
+            }
         }
 
 
         public override void Update(GameTime gameTime)
         {
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            foreach (SpawnPoint sp in spawns)
+            if (!finished)
             {
-                sp.Update(elapsed, enemies);
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                foreach (SpawnPoint sp in spawns)
+                {
+                    sp.Update(elapsed, enemies);
+                }
+                spawns.RemoveAll(sp => sp.enemiesToSpawn == sp.spawned);
+                if (spawns.Count == 0)
+                {
+                    finished = true;
+                }
             }
             base.Update(gameTime);
-        }
-
-        public void AddSpawnPoint(SpawnPoint sp)
-        {
-            spawns.Add(sp);
         }
     }
 
     public class SpawnPoint
     {
         float spawnInterval;
-        float enemiesToSpawn;
+        public int enemiesToSpawn;
         float startAfterSeconds;
         float totalElapsed;
         float elapsedSinceSpawn;
-        int spawned;
+        public int spawned;
         Vector2 spawnPosition;
         Enemy e;
 
@@ -66,8 +74,9 @@ namespace TowerDefense
             this.spawnPosition = spawnPosition;
         }
 
-        public void Update(float elapsed, List<Enemy> enemies)
+        public int Update(float elapsed, List<Enemy> enemies)
         {
+            int spawnedThisTurn = 0;
             if (spawned < enemiesToSpawn)
             {
                 totalElapsed += elapsed;
@@ -81,9 +90,11 @@ namespace TowerDefense
                         enemies.Add(creating);
                         elapsedSinceSpawn -= spawnInterval;
                         spawned++;
+                        spawnedThisTurn++;
                     }
                 }
             }
+            return spawnedThisTurn;
         }
     }
 }

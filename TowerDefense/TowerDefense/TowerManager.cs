@@ -55,14 +55,14 @@ namespace TowerDefense
         }
 
         public void Load(){
-            Projectile s = game.Level.projectileDict[1];
-            Tower t = new Tower(new Vector2(0,0), 300, 1, false, "bigBad", 48, game.Level.spriteDict[2], 500, s, 10);
+            Projectile s = game.loader.projectileDict[1];
+            Tower t = new Tower(new Vector2(0, 0), 300, 1, false, "bigBad", 48, game.loader.spriteDict[2], 500, s, 10);
             towerList.Add(t);
-            t = new Tower(new Vector2(0, 0), 100, 0.1f, false, "Fastshoting", 48, game.Level.spriteDict[2], 600, s, 10);
+            t = new Tower(new Vector2(0, 0), 100, 0.1f, false, "Fastshoting", 48, game.loader.spriteDict[2], 600, s, 10);
             towerList.Add(t);
-            t = new Tower(new Vector2(0, 0), 600, 0.5f, false, "Kamikaze", 48, game.Level.spriteDict[2], 1000, s, 10);
+            t = new Tower(new Vector2(0, 0), 600, 0.5f, false, "Kamikaze", 48, game.loader.spriteDict[2], 1000, s, 10);
             towerList.Add(t);
-            s = new Projectile(200, game.Level.spriteDict[1]);
+            s = new Projectile(200, game.loader.spriteDict[1]);
             t = new Tower(new Vector2(0, 0), 64, 5f, true, "Walking", 48, new Sprite(game.trap, 39, 39, new Vector2(0, 0)), 1000, s, 400);
             towerList.Add(t);
         }
@@ -74,8 +74,8 @@ namespace TowerDefense
             towers.Add(t);
 
             game.Level.ObjectMap[(int)position.Y / 48][(int)position.X / 48] = t;
-            game.Level.pathfinding = Pathfinding.createPath(game.Level.IntObjectMap, game.Level.Start, game.Level.End);
-            game.Level.money -= t.cost;
+            game.Level.pathfinding = Pathfinding.createPath(game.Level.IntObjectMap, new Point(0,0), game.Level.End);
+            game.money -= t.cost;
         }
 
         public override void Initialize()

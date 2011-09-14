@@ -22,7 +22,7 @@
   </Sprites>
   <Projectiles>
     <Projectile id="1">
-      <speed>100</speed>
+      <speed>300 </speed>
       <Sprite>1</Sprite>
     </Projectile>
   </Projectiles>
@@ -37,15 +37,73 @@
       <Projectile>1</Projectile>
       <Sprite>2</Sprite>
     </Tower>
+    <Tower id="2">
+      <name>Bolsi</name>
+      <range>200</range>
+      <damage>200</damage>
+      <shootSpeed>0.8</shootSpeed>
+      <walkable>false</walkable>
+      <cost>1000</cost>
+      <Projectile>1</Projectile>
+      <Sprite>2</Sprite>
+    </Tower>
   </Towers>
   <Enemies>
     <Enemy id="1">
-    <health>100</health>
-    <name>Creep1</name>
-    <Sprite>2</Sprite>
-    <drawSize>32</drawSize>
-    <rotation>0</rotation>
-    <speed>100</speed>
+      <health>100</health>
+      <name>Creep1</name>
+      <Sprite>3</Sprite>
+      <drawSize>32</drawSize>
+      <rotation>0</rotation>
+      <speed>100</speed>
     </Enemy>
   </Enemies>
+
+  <Level id="1">
+    <map>
+      <rows>12</rows>
+      <columns>12</columns>
+    </map>
+    <end>
+      <x>9</x>
+      <y>9</y>
+    </end>
+    <Tower>1</Tower>
+    <Tower>2</Tower>
+    <SpawnPoint>1</SpawnPoint>
+    <SpawnPoint>2</SpawnPoint>
+  </Level>
+  
+  <Level id="2">
+    <map>
+      <rows>5</rows>
+      <columns>5</columns>
+    </map>
+    <end>
+      <x>4</x>
+      <y>4</y>
+    </end>
+    <Tower>1</Tower>
+    <Tower>2</Tower>
+    <SpawnPoint>1</SpawnPoint>
+    <SpawnPoint>2</SpawnPoint>
+  </Level>
+
+  <SpawnPoint id="1">
+    <positionX>20</positionX>
+    <positionY>300</positionY>
+    <interval>3</interval>
+    <delay>1</delay>
+    <numToSpawn>5</numToSpawn>
+    <Enemy>1</Enemy>
+  </SpawnPoint>
+  <SpawnPoint id="2">
+    <positionX>20</positionX>
+    <positionY>100</positionY>
+    <interval>3</interval>
+    <delay>1</delay>
+    <numToSpawn>5</numToSpawn>
+    <Enemy>1</Enemy>
+    <Tower>1</Tower>
+  </SpawnPoint>
 </TowerDefence>

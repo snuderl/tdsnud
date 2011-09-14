@@ -57,9 +57,9 @@ namespace TowerDefense
 
             int dead = enemies.RemoveAll(e => e.health <= 0);
             int finished = enemies.RemoveAll(e => e.CellCoords == game.Level.End);
-            game.Level.Lives -= finished;
+            game.Lives -= finished;
             game.score += dead * 100;
-            game.Level.money += dead * 100;
+            game.money += dead * 100;
             base.Update(gameTime);
         }
 

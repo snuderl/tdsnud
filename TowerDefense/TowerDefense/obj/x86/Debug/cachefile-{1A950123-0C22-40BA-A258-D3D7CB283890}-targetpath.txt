@@ -1,7 +1,6 @@
 Content\Textures\box.xnb
 Content\Textures\circle.xnb
 Content\Textures\ammo.xnb
-Content\Textures\font.xnb
 Content\Textures\tiles.xnb
 Content\Textures\build.xnb
 Content\Textures\towerdefense.xnb
@@ -10,3 +9,4 @@ Content\Textures\GTD_SPRITES.xnb
 Content\Textures\enemy.xnb
 Content\Textures\thumb_Fireball.xnb
 Content\Textures\TradPlat.xnb
+Content\Textures\font.xnb

@@ -92,8 +92,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="InputHandler.cs" />
     <Compile Include="DisplayHelper.cs" />
     <Compile Include="MathFunctions.cs" />
     <Compile Include="Pathfinding.cs" />
