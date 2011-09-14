@@ -32,25 +32,14 @@ namespace TowerDefense
         public SpriteFont sf;
         public Texture2D tiles;
         public Texture2D build;
-        float sinceTowerChange = 0;
-        IGui selected;
         GridTexture grid;
         public Texture2D grass;
         private Level level;
         public Level Level { get { return level; } }
-        public Tower Building { get {  return level.towerManager.towerList[buildingTower]; } }
-        int buildingTower;
         public Texture2D trap;
         public Loader loader;
 
-        public enum Mode
-        {
-            normal, build
-        }
-        Mode mode = Mode.normal;
 
-
-       
 
 
 
@@ -103,7 +92,6 @@ namespace TowerDefense
             grass = Content.Load<Texture2D>(@"Textures/Grass_3");
             trap = Content.Load<Texture2D>(@"Textures/TradPlat");
             // TODO: use this.Content to load your game content here
-            buildingTower = 0;
             XmlDocument doc = new XmlDocument();
             doc.Load("test.xml");
             loader = new Loader(doc, Content, this);
@@ -137,54 +125,14 @@ namespace TowerDefense
 
             if (level.finished == true)
             {
-                level.Pause();
+                level.Pause(gameTime);
             }
 
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            sinceTowerChange += elapsed;
             KeyboardState ks = Keyboard.GetState();
             MouseState ms = Mouse.GetState();
-            if (mode == Mode.build)
-            {
-                if (ButtonState.Pressed == ms.LeftButton)
-                {
-                    int x, y;
-                    x = ms.X - (ms.X % 48);
-                    y = ms.Y - (ms.Y % 48);
-                    if (level.ObjectMap[y / 48][x / 48] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && money >= level.towerManager.towerList[buildingTower].cost)
-                    {
-                        Level.towerManager.Build(new Vector2(x, y), level.towerManager.towerList[buildingTower]);
-                    }
-                }
-                if (sinceTowerChange > 0.1f && ks.IsKeyDown(Keys.Add))
-                {
-                    buildingTower++;
-                    if (buildingTower == level.towerManager.towerList.Count)
-                        buildingTower = 0;
 
-                    sinceTowerChange = 0;
-                }
-            }
-            else if (mode == Mode.normal && ButtonState.Pressed == ms.LeftButton)
-            {
-                Rectangle mouse = new Rectangle(ms.X - 2, ms.Y - 2, 4, 4);
-                foreach (Enemy e in Level.EnemyManager.enemies)
-                {
-                    Rectangle rec = e.destinationRectangle;
-                    if (mouse.Intersects(rec))
-                    {
-                        selected = e;
-                    }
-                }
-                foreach (Tower t in Level.towerManager.towers)
-                {
-                    Rectangle rec = t.DestinationRectangle;
-                    if (mouse.Intersects(rec))
-                    {
-                        selected = t;
-                    }
-                }
-            }
+           
             if (ks.IsKeyDown(Keys.Left))
             {
                 camera.X += 200 * elapsed;
@@ -201,14 +149,7 @@ namespace TowerDefense
             {
                 camera.Y -= 200 * elapsed;
             }
-            if (ks.IsKeyDown(Keys.B))
-            {
-                mode = Mode.build;
-            }
-            if (ks.IsKeyDown(Keys.N))
-            {
-                mode = Mode.normal;
-            }
+
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -224,40 +165,7 @@ namespace TowerDefense
             spriteBatch.Begin();
 
             Level.Draw(gameTime, spriteBatch);
-            if (mode == Mode.build)
-            {
-                MouseState ms = Mouse.GetState();
-                int x, y;
-                x = ms.X - (ms.X % 48);
-                y = ms.Y - (ms.Y % 48);
-                int xCoord, yCoord;
-                xCoord = x / 48;
-                yCoord = y / 48;
-                if (!(xCoord >= level.ObjectMap[0].Length || xCoord < 0 || yCoord < 0 || yCoord >= level.ObjectMap.Length))
-                {
-                    Rectangle dest = Building.DestinationRectangle;
-                    dest.Offset(x, y);
-                    Color c = Color.White;
-                    if (level.ObjectMap[yCoord][xCoord] == null && !Level.EnemyManager.isEnemyOnIt(new Point(x / 48, y / 48)) && level.towerManager.towerList[buildingTower].cost <= money)
-                    {
-                        c = Color.LightSeaGreen;
-                    }
-                    else
-                    {
-                        c = Color.Red;
-                    }
-
-                    spriteBatch.Draw(Building.s.Texture, dest, Building.s.SourceRec, c * 0.3f);
-                }
-                spriteBatch.DrawString(sf, "Name: " + level.towerManager.towerList[buildingTower].Name + "\nCost: " + level.towerManager.towerList[buildingTower].cost + "\nRange: " + level.towerManager.towerList[buildingTower].range + "\nAtackSpeed: " + level.towerManager.towerList[buildingTower].shootSpeed, new Vector2(0, 400), Color.White);
-            }
-            else
-            {
-                if (selected != null)
-                {
-                    selected.Draw(gameTime, spriteBatch, sf);
-                }
-            }
+           
             grid.Draw(gameTime, spriteBatch);
             spriteBatch.End();
 

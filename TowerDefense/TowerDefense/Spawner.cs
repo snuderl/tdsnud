@@ -34,9 +34,11 @@ namespace TowerDefense
 
         public override void Update(GameTime gameTime)
         {
-            if (!finished)
+            if (!finished && !game.Level.Paused)
             {
+
                 float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                double time = gameTime.TotalGameTime.TotalSeconds;
                 foreach (SpawnPoint sp in spawns)
                 {
                     sp.Update(elapsed, enemies);

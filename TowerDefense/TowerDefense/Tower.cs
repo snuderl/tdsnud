@@ -23,10 +23,18 @@ namespace TowerDefense
         public bool walkable;
         string name;
         public Sprite s;
+        public Enemy Target { get; set; }
         public int cellSize;
         public int cost;
         public int damage;
         public Projectile projectile;
+        public Point CellCoords
+        {
+            get
+            {
+                return new Point((int)(Position.X +1 ) / 48, (int)(Position.Y + 1) / 48);
+            }
+        }
         public string Name
         {
             get { return name; }
@@ -71,6 +79,7 @@ namespace TowerDefense
             this.cost = cost;
             this.projectile = (Projectile)projectile.Clone();
             this.damage = damage;
+            Target = null;
         }
 
 

@@ -27,6 +27,17 @@
     </Projectile>
   </Projectiles>
   <Towers>
+    <Tower id="2">
+      <name>Bolsi</name>
+      <range>200</range>
+      <damage>200</damage>
+      <shootSpeed>0,5</shootSpeed>
+      <walkable>false</walkable>
+      <cost>1000</cost>
+      <Projectile>1</Projectile>
+      <Sprite>2</Sprite>
+    </Tower>
+
     <Tower id="1">
       <name>Test</name>
       <range>100</range>
@@ -37,13 +48,13 @@
       <Projectile>1</Projectile>
       <Sprite>2</Sprite>
     </Tower>
-    <Tower id="2">
-      <name>Bolsi</name>
-      <range>200</range>
-      <damage>200</damage>
-      <shootSpeed>0.8</shootSpeed>
+    <Tower id="3">
+      <name>Sniper</name>
+      <range>1000</range>
+      <damage>60</damage>
+      <shootSpeed>1</shootSpeed>
       <walkable>false</walkable>
-      <cost>1000</cost>
+      <cost>500</cost>
       <Projectile>1</Projectile>
       <Sprite>2</Sprite>
     </Tower>
@@ -68,8 +79,8 @@
       <x>9</x>
       <y>9</y>
     </end>
-    <Tower>1</Tower>
     <Tower>2</Tower>
+    <Tower>3</Tower>
     <SpawnPoint>1</SpawnPoint>
     <SpawnPoint>2</SpawnPoint>
   </Level>
@@ -83,8 +94,8 @@
       <x>4</x>
       <y>4</y>
     </end>
-    <Tower>1</Tower>
     <Tower>2</Tower>
+    <Tower>3</Tower>
     <SpawnPoint>1</SpawnPoint>
     <SpawnPoint>2</SpawnPoint>
   </Level>
@@ -92,17 +103,17 @@
   <SpawnPoint id="1">
     <positionX>20</positionX>
     <positionY>300</positionY>
-    <interval>3</interval>
+    <interval>1</interval>
     <delay>1</delay>
-    <numToSpawn>5</numToSpawn>
+    <numToSpawn>40</numToSpawn>
     <Enemy>1</Enemy>
   </SpawnPoint>
   <SpawnPoint id="2">
     <positionX>20</positionX>
     <positionY>100</positionY>
-    <interval>3</interval>
+    <interval>0,9</interval>
     <delay>1</delay>
-    <numToSpawn>5</numToSpawn>
+    <numToSpawn>20</numToSpawn>
     <Enemy>1</Enemy>
     <Tower>1</Tower>
   </SpawnPoint>

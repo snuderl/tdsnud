@@ -31,7 +31,7 @@ namespace TowerDefense
         {
             get
             {
-                return new Point((int)(Position.X + origin.X) / 48, (int)(Position.Y + origin.Y) / 48);
+                return new Point((int)(Position.X) / 48, (int)(Position.Y) / 48);
             }
         }
         public Texture2D Text
