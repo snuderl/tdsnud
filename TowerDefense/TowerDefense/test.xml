@@ -87,12 +87,12 @@
   
   <Level id="2">
     <map>
-      <rows>5</rows>
-      <columns>5</columns>
+      <rows>8</rows>
+      <columns>8</columns>
     </map>
     <end>
-      <x>4</x>
-      <y>4</y>
+      <x>7</x>
+      <y>7</y>
     </end>
     <Tower>2</Tower>
     <Tower>3</Tower>

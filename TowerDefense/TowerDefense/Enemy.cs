@@ -18,6 +18,7 @@ namespace TowerDefense
     {
         public Vector2 position;
         public int health;
+        public int id=0;
         string name = "EvilCreep";
         public string Name { get { return name; } set { this.name = value; } }
         public Sprite animated;

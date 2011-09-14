@@ -27,14 +27,13 @@ namespace TowerDefense
         public int[][] IntObjectMap { get { return createArrayMap(objectMap); } }
         private Point end;
         public Point End { get { return end; } }
-        public bool finished = false;
-        public bool Paused { get; set; }
 
         public Spawner spawner;
 
         public Pathfinding pathfinding;
         TowerDefense game;
         public float elapsed;
+        public int Id { get; set; }
 
         public TowerManager towerManager;
 
@@ -48,6 +47,11 @@ namespace TowerDefense
         int buildingTower = 0;
         public TimeSpan pauseStart;
         public TimeSpan totalPauseTime;
+        public bool Won { get; set; }
+        public bool Lost { get; set; }
+
+        public bool finished = false;
+        public bool Paused { get; set; }
 
         public enum Mode
         {
@@ -64,12 +68,15 @@ namespace TowerDefense
 
 
 
-        public Level(TowerDefense game, int cellSize, int rows, int columns, Point end, List<SpawnPoint> spawns)
+        public Level(TowerDefense game, int cellSize, int rows, int columns, Point end, List<SpawnPoint> spawns,int id)
             : base(game)
         {
             this.cellSize = cellSize;
             this.end = end;
+            this.Id = id;
             InitializeMap(rows, columns);
+            Lost = false;
+            Won = false;
             this.game = game;
             componentList = new List<GameComponent>();
 
@@ -127,9 +134,14 @@ namespace TowerDefense
         {
 
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (game.Lives <= 0 || (spawner.finished == true && enemyManager.enemies.Count == 0))
+            if (game.Lives <= 0)
             {
-                finished = true;
+                Lost = true;
+                finished=true;
+            }
+            else if(spawner.finished == true && enemyManager.enemies.Count == 0){
+                Won=true;
+                finished=true;
             }
             if (!finished)
             {
@@ -303,11 +315,19 @@ namespace TowerDefense
 
 
                 spriteBatch.DrawString(game.sf, "X: " + Mouse.GetState().X + " Y: " + "  Money: " + game.money + "  Score: " + game.score + "!" + "  Lives: " + game.Lives, new Vector2(0, 0), Color.White);
-                if (finished == true)
+            }
+            if (finished == true)
+            {
+                String text = "";
+                if (Won)
                 {
-                    spriteBatch.DrawString(game.sf, "Level blablabla...", new Vector2(400, 400), Color.White);
-
+                    text = "Level completed!";
                 }
+                else
+                {
+                    text = "You suck!";
+                }
+                spriteBatch.DrawString(game.sf, text, new Vector2(300, 300), Color.White);
             }
         }
 

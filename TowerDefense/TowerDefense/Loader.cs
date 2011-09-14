@@ -22,7 +22,7 @@ namespace TowerDefense
         public Dictionary<int, Projectile> projectileDict;
         public Dictionary<int, Tower> towerDict;
         public Dictionary<int, Enemy> enemyDict;
-        public Dictionary<int, Level> levelDict;
+        public List<Level> levelDict;
                     
         public Dictionary<int, SpawnPoint> spawnPointDict;
 
@@ -39,7 +39,7 @@ namespace TowerDefense
             towerDict = new Dictionary<int, Tower>();
             projectileDict = new Dictionary<int, Projectile>();
             enemyDict = new Dictionary<int, Enemy>();
-            levelDict = new Dictionary<int, Level>();
+            levelDict = new List<Level>();
             spawnPointDict = new Dictionary<int, SpawnPoint>();
             this.game = game;
 
@@ -146,7 +146,7 @@ namespace TowerDefense
                     int spawnId = int.Parse(spawnNode.InnerText);
                     spawns.Add(spawnPointDict[spawnId]);
                 }
-                Level lev = new Level(game, 48, rows, columns, end, spawns);
+                Level lev = new Level(game, 48, rows, columns, end, spawns, id);
 
                 foreach (XmlNode towerNode in levelNode.SelectNodes("Tower"))
                 {
@@ -154,7 +154,7 @@ namespace TowerDefense
                     lev.towerManager.towerList.Add(towerDict[towid]);
                 }
 
-                levelDict.Add(id, lev);
+                levelDict.Add(lev);
             }
         }
 

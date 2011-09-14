@@ -96,8 +96,9 @@ namespace TowerDefense
             doc.Load("test.xml");
             loader = new Loader(doc, Content, this);
 
-            Components.Add(loader.levelDict[1]);
-            level = loader.levelDict[1];
+
+            level = loader.levelDict[0];
+            Components.Add(level);
 
 
         }

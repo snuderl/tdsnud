@@ -89,6 +89,7 @@ namespace TowerDefense
                     {
                         Enemy creating = (Enemy)e.Clone();
                         creating.position = spawnPosition;
+                        creating.id = spawned;
                         enemies.Add(creating);
                         elapsedSinceSpawn -= spawnInterval;
                         spawned++;
