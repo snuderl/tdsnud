@@ -77,6 +77,7 @@ namespace TowerDefense
     public class Sprite : ICloneable
     {
 
+        public float aspecRation;
         protected int width, height;
         public Sprite(Texture2D text, int width, int height, Vector2 startPos)
         {
@@ -84,6 +85,8 @@ namespace TowerDefense
             this.width = width;
             this.height = height;
             sourceRec = new Rectangle((int)startPos.X,(int)startPos.Y, width,height);
+            //aspecRation = (float)width / (float)height;
+            aspecRation = 1;
         }
         protected Texture2D text;
         private Rectangle sourceRec;

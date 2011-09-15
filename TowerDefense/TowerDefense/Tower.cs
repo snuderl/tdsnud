@@ -64,7 +64,15 @@ namespace TowerDefense
             s.Update(gameTime);
         }
 
-        public Rectangle DestinationRectangle { get { return new Rectangle((int)position.X, (int)position.Y, cellSize, cellSize); } }
+        public Rectangle DestinationRectangle { get {
+            float aspectRation = s.aspecRation;
+            if (aspectRation > 1)
+            {
+                return new Rectangle((int)position.X, (int)position.Y, (int)(cellSize), (int)(cellSize / aspectRation));
+            }
+            return new Rectangle((int)position.X, (int)position.Y, (int)(cellSize / aspectRation), (int)(cellSize));
+        
+        } }
 
 
         public Tower(Vector2 position, int range, float shootSpeed, bool walkable, String name, int cellSize, Sprite s, int cost, Projectile projectile, int damage)

@@ -50,7 +50,7 @@ namespace TowerDefense
                         s.damage = t.damage;
                         game.Level.ProjectileManager.shoots.Add(s);
                         t.sinceLastShot = 0;
-                        this.game.se .Play(0.5f,0, 0);
+                        this.game.se .Play(0.3f,0, 0);
                     }
                 }
             }

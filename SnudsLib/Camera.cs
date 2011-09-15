@@ -19,6 +19,8 @@ namespace SnudsLib
         public Point PointPosition { get { return new Point((int)Position.X, (int)Position.Y); } }
         public float Width { get; set; }
         public float Height { get; set; }
+        public int ScreenWidth { get { return Game.GraphicsDevice.Viewport.Width; } }
+        public int ScreenHeight { get { return Game.GraphicsDevice.Viewport.Height; } }
 
         public Camera(Game game, Vector2 startCamera, int width, int height)
             : base(game)
@@ -55,18 +57,28 @@ namespace SnudsLib
             if (ks.IsKeyDown(Keys.Left))
             {
                 Position.X += 200 * elapsed;
+
+                if (-Position.X < 0)
+                    Position.X = 0;
             }
             if (ks.IsKeyDown(Keys.Right))
             {
                 Position.X -= 200 * elapsed;
+
+                if (-Position.X > Width-ScreenWidth)
+                    Position.X = -(Width-ScreenWidth);
             }
             if (ks.IsKeyDown(Keys.Up))
             {
                 Position.Y += 200 * elapsed;
+                if (-Position.Y < 0)
+                    Position.Y = 0;
             }
             if (ks.IsKeyDown(Keys.Down))
             {
                 Position.Y -= 200 * elapsed;
+                if (-Position.Y > Height-ScreenHeight)
+                    Position.Y = -(Height-ScreenHeight);
             }
             
             

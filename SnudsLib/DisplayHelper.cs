@@ -28,9 +28,9 @@ namespace SnudsLib
         {
             Texture2D texture = new Texture2D(game.GraphicsDevice, 2,2);
             texture.SetData<Color>(CreateForeground(4));
-            for (int y = 0; y < game.GraphicsDevice.Viewport.Height / cell; y++)
+            for (int y = 0; (y-1) <= game.GraphicsDevice.Viewport.Height / cell; y++)
             {
-                for (int x = 0; x < game.GraphicsDevice.Viewport.Width / cell; x++)
+                for (int x = 0; (x-1) <= game.GraphicsDevice.Viewport.Width / cell; x++)
                 {
                     Vector2 position = new Vector2(x * cell, y * cell);
                     if (camera != null)

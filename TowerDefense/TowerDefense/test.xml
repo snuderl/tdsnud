@@ -12,6 +12,13 @@
       <positionX>278</positionX>
       <positionY>0</positionY>
     </Sprite>
+    <Sprite id="4">
+      <resourceName>GTD_SPRITES</resourceName>
+      <width>102</width>
+      <height>60</height>
+      <positionX>263</positionX>
+      <positionY>70</positionY>
+    </Sprite>
     <!--Enemies-->
     <Sprite id="3" animated="true">
       <resourceName>enemy</resourceName>
@@ -37,7 +44,6 @@
       <Projectile>1</Projectile>
       <Sprite>2</Sprite>
     </Tower>
-
     <Tower id="1">
       <name>Test</name>
       <range>100</range>
@@ -56,7 +62,7 @@
       <walkable>false</walkable>
       <cost>500</cost>
       <Projectile>1</Projectile>
-      <Sprite>2</Sprite>
+      <Sprite>4</Sprite>
     </Tower>
   </Towers>
   <Enemies>
@@ -90,11 +96,19 @@
     <Tower>1</Tower>
     <Tower>2</Tower>
     <Tower>3</Tower>
+    <Wave>
     <SpawnPoint>1</SpawnPoint>
     <SpawnPoint>2</SpawnPoint>
+    </Wave>
+    <Wave>
+      <SpawnPoint>1</SpawnPoint>
+      <SpawnPoint>2</SpawnPoint>
+    </Wave>
+    <Wave>
     <SpawnPoint>3</SpawnPoint>
     <SpawnPoint>4</SpawnPoint>
     <SpawnPoint>5</SpawnPoint>
+    </Wave>
   </Level>
   
   <Level id="2">
@@ -117,7 +131,7 @@
     <positionY>300</positionY>
     <interval>1</interval>
     <delay>1</delay>
-    <numToSpawn>40</numToSpawn>
+    <numToSpawn>5</numToSpawn>
     <Enemy>1</Enemy>
   </SpawnPoint>
   <SpawnPoint id="2">
@@ -125,7 +139,7 @@
     <positionY>100</positionY>
     <interval>0,9</interval>
     <delay>1</delay>
-    <numToSpawn>20</numToSpawn>
+    <numToSpawn>5</numToSpawn>
     <Enemy>1</Enemy>
   </SpawnPoint>
   <SpawnPoint id="3">

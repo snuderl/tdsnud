@@ -39,6 +39,8 @@ namespace TowerDefense
         public Loader loader;
         public SoundEffect se;
         public SoundEffect music;
+        public Texture2D mountain;
+        public Dictionary<String, Rectangle> sourceRectDict;
 
 
 
@@ -57,6 +59,7 @@ namespace TowerDefense
 
             //Components.Add(gui);
             IsMouseVisible = true;
+            sourceRectDict = new Dictionary<string, Rectangle>();
 
 
 
@@ -92,11 +95,21 @@ namespace TowerDefense
             trap = Content.Load<Texture2D>(@"Textures/TradPlat");
             se = Content.Load<SoundEffect>(@"Audio/fire_laser1");
             music = Content.Load<SoundEffect>(@"Audio/Theme");
+            mountain = Content.Load<Texture2D>(@"Textures/004-Mountain01");
             // TODO: use this.Content to load your game content here
             XmlDocument doc = new XmlDocument();
             doc.Load("test.xml");
             loader = new Loader(doc, Content, this);
 
+            sourceRectDict.Add("1", new Rectangle(0, 160, 32, 32));
+            sourceRectDict.Add("2", new Rectangle(32, 160, 32, 32));
+            sourceRectDict.Add("3", new Rectangle(64, 160, 32, 32));
+            sourceRectDict.Add("4", new Rectangle(0, 192, 32, 32));
+            sourceRectDict.Add("5", new Rectangle(0, 0, 32, 32));
+            sourceRectDict.Add("6", new Rectangle(64, 192, 32, 32));
+            sourceRectDict.Add("7", new Rectangle(0, 224, 32, 32));
+            sourceRectDict.Add("8", new Rectangle(32, 224, 32, 32));
+            sourceRectDict.Add("9", new Rectangle(64, 224, 32, 32));
 
             level = loader.levelDict[0];
             Components.Add(level);

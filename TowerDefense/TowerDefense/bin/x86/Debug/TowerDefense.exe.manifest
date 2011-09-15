@@ -117,26 +117,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SnudsLib.dll" size="9728">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SnudsLib.dll" size="10240">
       <assemblyIdentity name="SnudsLib" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>X5+7dlCt6QeZBL179wueYGMfrq8=</dsig:DigestValue>
+        <dsig:DigestValue>Jpo8I2LAeAj3j1NOE1WhuvkHM3M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="35840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="38400">
       <assemblyIdentity name="TowerDefense" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>mSHvuVaHOMOfVkxuRLbmToQ0nGc=</dsig:DigestValue>
+        <dsig:DigestValue>wKQi3LrFR5IFJ3wpTRxSwjDt58s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -156,6 +156,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>jSqn91OjYzNHnba+Ik9O8Nfy7Hw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Textures\004-Mountain01.xnb" size="917691">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>J4x4jbWfPlbzZ0DMTzsUpOTWES4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Textures\ammo.xnb" size="287">

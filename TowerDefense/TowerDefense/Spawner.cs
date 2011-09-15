@@ -15,17 +15,22 @@ namespace TowerDefense
 {
     public class Spawner : GameComponent
     {
-        List<SpawnPoint> spawns;
         TowerDefense game;
-        List<Enemy> enemies;
+        public List<Enemy> enemies;
+        List<Wave> waves;
         public bool finished = false;
-        public Spawner(TowerDefense game, List<Enemy> enemies, List<SpawnPoint> spawnPoints)
+        int current;
+        private Wave Wave { get { return waves[current]; } }
+
+        float elapsedSinceWaveComplete=0;
+        public Spawner(TowerDefense game, List<Enemy> enemies, List<Wave> waves)
             : base(game)
         {
             this.game = game;
             this.enemies = enemies;
-            spawns = spawnPoints;
-            if (spawnPoints.Count == 0)
+            this.waves = waves;
+            current = 0;
+            if (waves.Count == 0)
             {
                 finished = true;
             }
@@ -33,31 +38,109 @@ namespace TowerDefense
 
         public void Reset()
         {
+            foreach (Wave wave in waves)
+            {
+                wave.Reset();
+            }
+            current = 0;
+            finished = false;
+            elapsedSinceWaveComplete = 0; 
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;  
+            if (!finished && !game.Level.Paused)
+            {
+                Wave.Update(gameTime, enemies);
+                if (Wave.Finished == true && game.Level.EnemyManager.enemies.Count==0)
+                {
+                    elapsedSinceWaveComplete += elapsed;
+                    if (elapsedSinceWaveComplete > 5)
+                    {
+                        current++;
+                        if (current == waves.Count)
+                        {
+                            finished = true;
+                            return;
+                        }
+                        else
+                        {
+                            Wave.Reset();
+                        }
+                        elapsedSinceWaveComplete = 0;
+                    }
+                }
+            }
+            base.Update(gameTime);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            if (!finished)
+            {
+                if (Wave.Finished == true && game.Level.Lost==false &&  game.Level.EnemyManager.enemies.Count == 0)
+                {
+                    String message="";
+                    if(elapsedSinceWaveComplete<2){
+                        message = "Wave " + (current + 1) + " finished.";
+                    }else if(elapsedSinceWaveComplete>4){
+                        message = "Incoming wave " + (current + 1);
+                    }
+
+                    spriteBatch.DrawString(game.sf, message, new Vector2(300, 300), Color.White);
+                }
+            }
+        }
+    }
+
+    public class Wave
+    {
+
+        List<SpawnPoint> spawns;
+        List<SpawnPoint> finished;
+        public bool Finished { get; set; }
+
+        public void Reset() 
+        {
+            spawns.AddRange(finished);
             foreach (SpawnPoint sp in spawns)
             {
                 sp.Reset();
             }
+            finished = new List<SpawnPoint>();
+            Finished = false;
+        }
+        public Wave(List<SpawnPoint> spawns)
+        {
+            this.spawns = spawns;
+            finished = new List<SpawnPoint>();
+            Finished = false;
+            if (spawns.Count == 0)
+            {
+                Finished = true;
+            }
         }
 
-
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, List<Enemy> enemies)
         {
-            if (!finished && !game.Level.Paused)
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            double time = gameTime.TotalGameTime.TotalSeconds;
+            foreach (SpawnPoint sp in spawns)
             {
-
-                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-                double time = gameTime.TotalGameTime.TotalSeconds;
-                foreach (SpawnPoint sp in spawns)
-                {
-                    sp.Update(elapsed, enemies);
-                }
-                spawns.RemoveAll(sp => sp.enemiesToSpawn == sp.spawned);
-                if (spawns.Count == 0)
-                {
-                    finished = true;
-                }
+                sp.Update(elapsed, enemies);
             }
-            base.Update(gameTime);
+            List<SpawnPoint> tmp = spawns.FindAll(sp => sp.enemiesToSpawn == sp.spawned);
+            finished.AddRange(tmp);
+            foreach (SpawnPoint sp in tmp)
+            {
+                spawns.Remove(sp);
+            }
+            if (spawns.Count == 0)
+            {
+                Finished = true;
+            }
         }
     }
 
@@ -84,7 +167,7 @@ namespace TowerDefense
             this.spawnPosition = spawnPosition;
         }
 
-        public int Update(float elapsed, List<Enemy> enemies)
+        public void Update(float elapsed, List<Enemy> enemies)
         {
             int spawnedThisTurn = 0;
             if (spawned < enemiesToSpawn)
@@ -105,7 +188,6 @@ namespace TowerDefense
                     }
                 }
             }
-            return spawnedThisTurn;
         }
 
         public void Reset()

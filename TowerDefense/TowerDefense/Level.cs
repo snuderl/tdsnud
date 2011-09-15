@@ -290,7 +290,43 @@ namespace TowerDefense
                 for (int x = 0; x < Map[y].Length; x++)
                 {
                     Rectangle dest = camera.offset(new Rectangle(x * CellSize, y * CellSize, CellSize, CellSize));
-                    spriteBatch.Draw(game.grass, dest, Color.White);
+                    Rectangle source = game.sourceRectDict["5"];
+                    if (x == 0 && y==0)
+                    {
+                        source = game.sourceRectDict["1"];
+                    }
+                    else if (x == (map[0].Length - 1) && y == (map.Length - 1))
+                    {
+                        source = game.sourceRectDict["9"];
+                    }
+                    else if (x == 0 && y == (map.Length - 1))
+                    {
+                        source = game.sourceRectDict["7"];
+                    }
+                    else if (x == (map[0].Length - 1) && y == 0)
+                    {
+                        source = game.sourceRectDict["3"];
+                    }
+                    else
+                    {
+                        if (x == 0)
+                        {
+                            source = game.sourceRectDict["4"];
+                        }
+                        else if (y == 0)
+                        {
+                            source = game.sourceRectDict["2"];
+                        }
+                        else if (y == (map.Length - 1))
+                        {
+                            source = game.sourceRectDict["8"];
+                        }
+                        else if (x == (map[0].Length - 1))
+                        {
+                            source = game.sourceRectDict["6"];
+                        }
+                    }
+                    spriteBatch.Draw(game.mountain, dest,source, Color.White);
                 }
             }
             spriteBatch.Draw(game.boxT, camera.offset(new Vector2(end.X * 48, end.Y * 48)), Color.White);
@@ -298,8 +334,9 @@ namespace TowerDefense
             towerManager.Draw(gameTime, spriteBatch);
             EnemyManager.Draw(gameTime, spriteBatch);
             ProjectileManager.Draw(gameTime, spriteBatch);
+            spawner.Draw(spriteBatch);
 
-            grid.Draw(gameTime, spriteBatch);
+            //grid.Draw(gameTime, spriteBatch);
 
             if (!Paused)
             {
@@ -342,7 +379,7 @@ namespace TowerDefense
                 }
 
 
-                spriteBatch.DrawString(game.sf, "X: " + Mouse.GetState().X + " Y: " + "  Money: " + game.money + "  Score: " + game.score + "!" + "  Lives: " + game.Lives, new Vector2(0, 0), Color.White);
+                spriteBatch.DrawString(game.sf, "X: " + Mouse.GetState().X + " Y: "+Mouse.GetState().Y + "  Money: " + game.money + "  Score: " + game.score + "!" + "  Lives: " + game.Lives, new Vector2(0, 0), Color.White);
             }
             if (finished == true)
             {
@@ -360,7 +397,7 @@ namespace TowerDefense
         }
 
 
-        public Level(TowerDefense game, int cellSize, int rows, int columns, Point end, List<SpawnPoint> spawns, int id)
+        public Level(TowerDefense game, int cellSize, int rows, int columns, Point end, List<Wave> waves, int id)
             : base(game)
         {
             this.cellSize = cellSize;
@@ -375,7 +412,7 @@ namespace TowerDefense
             towerManager = new TowerManager(game);
             enemyManager = new EnemyManager(game);
             projectileManager = new ProjectileManager(game);
-            spawner = new Spawner(game, enemyManager.enemies, spawns);
+            spawner = new Spawner(game, enemyManager.enemies, waves);
             camera = new Camera(game, Vector2.Zero, columns*cellSize, rows*cellSize);
             Paused = false;
 

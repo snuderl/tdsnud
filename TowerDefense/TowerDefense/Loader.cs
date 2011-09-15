@@ -140,13 +140,18 @@ namespace TowerDefense
                 int rows = int.Parse(levelNode["map"]["rows"].InnerText);
                 Point end = readPointFromXml(levelNode["end"]);
 
-                List<SpawnPoint> spawns=new List<SpawnPoint>();
-                foreach (XmlNode spawnNode in levelNode.SelectNodes("SpawnPoint"))
+                List<Wave> waves = new List<Wave>();
+                foreach (XmlNode waveNove in levelNode.SelectNodes("Wave"))
                 {
-                    int spawnId = int.Parse(spawnNode.InnerText);
-                    spawns.Add(spawnPointDict[spawnId]);
+                    List<SpawnPoint> spawns = new List<SpawnPoint>();
+                    foreach (XmlNode spawnNode in waveNove.SelectNodes("SpawnPoint"))
+                    {
+                        int spawnId = int.Parse(spawnNode.InnerText);
+                        spawns.Add(spawnPointDict[spawnId]);
+                    }
+                    waves.Add(new Wave(spawns));
                 }
-                Level lev = new Level(game, 48, rows, columns, end, spawns, id);
+                Level lev = new Level(game, 48, rows, columns, end, waves, id);
 
                 foreach (XmlNode towerNode in levelNode.SelectNodes("Tower"))
                 {
