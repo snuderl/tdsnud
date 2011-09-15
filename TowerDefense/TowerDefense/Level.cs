@@ -52,6 +52,7 @@ namespace TowerDefense
 
         public bool finished = false;
         public bool Paused { get; set; }
+        SoundEffectInstance se;
 
         public enum Mode
         {
@@ -81,14 +82,11 @@ namespace TowerDefense
             componentList = new List<GameComponent>();
 
             towerManager = new TowerManager(game);
-            AddComponent(towerManager);
             enemyManager = new EnemyManager(game);
-            AddComponent(enemyManager);
             projectileManager = new ProjectileManager(game);
-            AddComponent(projectileManager);
             spawner = new Spawner(game, enemyManager.enemies, spawns);
-            AddComponent(spawner);
             Paused = false;
+
 
             pathfinding = Pathfinding.createPath(IntObjectMap, new Point(0, 0), End);
 
@@ -100,6 +98,17 @@ namespace TowerDefense
             componentList.Add(component);
         }
 
+        public void Start()
+        {
+            AddComponent(towerManager);
+            AddComponent(enemyManager);
+            AddComponent(projectileManager);
+            AddComponent(spawner);
+            spawner.Reset();
+            se = game.music.CreateInstance();
+            se.Play();
+        }
+
         public void Finished()
         {
             foreach (GameComponent c in componentList)
@@ -107,6 +116,8 @@ namespace TowerDefense
                 c.Enabled = false;
                 game.Components.Remove(c);
             }
+            game.Components.Remove(this);
+            se.Stop(true);
         }
 
         public void Pause(GameTime gameTime)
@@ -118,6 +129,7 @@ namespace TowerDefense
             }
             Paused = true;
             pauseStart = gameTime.TotalGameTime;
+            se.Pause();
         }
 
         public void UnPause(GameTime gameTime)
@@ -128,6 +140,7 @@ namespace TowerDefense
             }
             Paused = false;
             totalPauseTime = gameTime.TotalGameTime - pauseStart;
+            se.Resume();
         }
 
         public override void Update(GameTime gameTime)

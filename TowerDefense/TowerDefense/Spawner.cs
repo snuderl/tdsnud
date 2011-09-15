@@ -31,6 +31,14 @@ namespace TowerDefense
             }
         }
 
+        public void Reset()
+        {
+            foreach (SpawnPoint sp in spawns)
+            {
+                sp.Reset();
+            }
+        }
+
 
         public override void Update(GameTime gameTime)
         {
@@ -98,6 +106,13 @@ namespace TowerDefense
                 }
             }
             return spawnedThisTurn;
+        }
+
+        public void Reset()
+        {
+            spawned = 0;
+            totalElapsed = 0;
+            elapsedSinceSpawn = spawnInterval + 0.000001f;
         }
     }
 }

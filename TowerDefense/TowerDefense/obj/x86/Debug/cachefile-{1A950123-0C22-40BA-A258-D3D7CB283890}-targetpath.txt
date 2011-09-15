@@ -10,3 +10,5 @@ Content\Textures\enemy.xnb
 Content\Textures\thumb_Fireball.xnb
 Content\Textures\TradPlat.xnb
 Content\Textures\font.xnb
+Content\Audio\fire_laser1.xnb
+Content\Audio\Theme.xnb

@@ -129,17 +129,35 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="34304">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="35328">
       <assemblyIdentity name="TowerDefense" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>tvsGnvdRH7sc+qA9TBk4yo/2tss=</dsig:DigestValue>
+        <dsig:DigestValue>laEYCwmeoFZMHbKOGs9UwboBJRc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="Content\Audio\fire_laser1.xnb" size="443497">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Ha8ABq+vwtWD/+W+W7zIBluqcrs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Audio\Theme.xnb" size="1241193">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jSqn91OjYzNHnba+Ik9O8Nfy7Hw=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Content\Textures\ammo.xnb" size="287">
     <hash>
       <dsig:Transforms>

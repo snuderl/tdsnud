@@ -38,6 +38,8 @@ namespace TowerDefense
         public Level Level { get { return level; } }
         public Texture2D trap;
         public Loader loader;
+        public SoundEffect se;
+        public SoundEffect music;
 
 
 
@@ -91,6 +93,8 @@ namespace TowerDefense
             build = Content.Load<Texture2D>(@"Textures/build");
             grass = Content.Load<Texture2D>(@"Textures/Grass_3");
             trap = Content.Load<Texture2D>(@"Textures/TradPlat");
+            se = Content.Load<SoundEffect>(@"Audio/fire_laser1");
+            music = Content.Load<SoundEffect>(@"Audio/Theme");
             // TODO: use this.Content to load your game content here
             XmlDocument doc = new XmlDocument();
             doc.Load("test.xml");
@@ -99,6 +103,7 @@ namespace TowerDefense
 
             level = loader.levelDict[0];
             Components.Add(level);
+            level.Start();
 
 
         }
@@ -124,33 +129,58 @@ namespace TowerDefense
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            if (level.finished == true)
+            if (level != null)
             {
-                level.Pause(gameTime);
-            }
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                KeyboardState ks = Keyboard.GetState();
+                MouseState ms = Mouse.GetState();
 
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            KeyboardState ks = Keyboard.GetState();
-            MouseState ms = Mouse.GetState();
+                if (level.finished == true)
+                {
+                    level.Pause(gameTime);
+                    if (ks.IsKeyDown(Keys.Enter))
+                    {
+                        if (level.Won)
+                        {
+                            //Next Level
+                            level.Finished();
+                            if (level.Id < loader.levelDict.Count)
+                            {
+                                level = loader.levelDict[level.Id];
+                                Components.Add(level);
+                                level.Start();
+                            }
+                            else
+                            {
+                                level = null;
+                            }
+                        }
+                        else if (level.Lost)
+                        {
+                            this.Exit();
+                        }
+                    }
+                }
 
-           
-            if (ks.IsKeyDown(Keys.Left))
-            {
-                camera.X += 200 * elapsed;
-            }
-            if (ks.IsKeyDown(Keys.Right))
-            {
-                camera.X -= 200 * elapsed;
-            }
-            if (ks.IsKeyDown(Keys.Up))
-            {
-                camera.Y += 200 * elapsed;
-            }
-            if (ks.IsKeyDown(Keys.Down))
-            {
-                camera.Y -= 200 * elapsed;
-            }
 
+
+                if (ks.IsKeyDown(Keys.Left))
+                {
+                    camera.X += 200 * elapsed;
+                }
+                if (ks.IsKeyDown(Keys.Right))
+                {
+                    camera.X -= 200 * elapsed;
+                }
+                if (ks.IsKeyDown(Keys.Up))
+                {
+                    camera.Y += 200 * elapsed;
+                }
+                if (ks.IsKeyDown(Keys.Down))
+                {
+                    camera.Y -= 200 * elapsed;
+                }
+            }
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -165,8 +195,11 @@ namespace TowerDefense
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
 
-            Level.Draw(gameTime, spriteBatch);
-           
+            if (level != null)
+            {
+                Level.Draw(gameTime, spriteBatch);
+            }
+
             grid.Draw(gameTime, spriteBatch);
             spriteBatch.End();
 

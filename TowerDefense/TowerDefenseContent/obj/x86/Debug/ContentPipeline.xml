@@ -109,6 +109,24 @@
       <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\tdsnud\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\font.xnb</Output>
       <Time>2011-09-13T15:07:28.5317995+02:00</Time>
     </Item>
+    <Item>
+      <Source>Audio\fire_laser1.wav</Source>
+      <Name>Audio\fire_laser1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\tdsnud\TowerDefense\TowerDefense\bin\x86\Debug\Content\Audio\fire_laser1.xnb</Output>
+      <Time>2011-09-15T08:53:50.1335223+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\Theme.WAV</Source>
+      <Name>Audio\Theme</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\tdsnud\TowerDefense\TowerDefense\bin\x86\Debug\Content\Audio\Theme.xnb</Output>
+      <Time>2011-09-15T10:04:39.3726652+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
