@@ -76,8 +76,8 @@ namespace TowerDefense
         {
             foreach (Enemy e in enemies)
             {
-                spriteBatch.Draw(e.Text, e.destinationRectangle, e.SourceRect, Color.White, e.rotation, e.origin, SpriteEffects.None, 1);
-                spriteBatch.DrawString(game.sf, e.id.ToString(), new Vector2(e.destinationRectangle.X, e.destinationRectangle.Y), Color.White);
+                spriteBatch.Draw(e.Text, game.Level.Camera.offset(e.destinationRectangle), e.SourceRect, Color.White, e.rotation, e.origin, SpriteEffects.None, 1);
+                spriteBatch.DrawString(game.sf, e.id.ToString(), game.Level.Camera.offset(new Vector2(e.destinationRectangle.X, e.destinationRectangle.Y)), Color.White);
             }
         }
 

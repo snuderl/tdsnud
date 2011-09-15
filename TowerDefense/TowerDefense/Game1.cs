@@ -32,7 +32,6 @@ namespace TowerDefense
         public SpriteFont sf;
         public Texture2D tiles;
         public Texture2D build;
-        GridTexture grid;
         public Texture2D grass;
         private Level level;
         public Level Level { get { return level; } }
@@ -59,8 +58,6 @@ namespace TowerDefense
             //Components.Add(gui);
             IsMouseVisible = true;
 
-            grid = new GridTexture(this, 48);
-            Components.Add(grid);
 
 
         }
@@ -165,22 +162,6 @@ namespace TowerDefense
 
 
 
-                if (ks.IsKeyDown(Keys.Left))
-                {
-                    camera.X += 200 * elapsed;
-                }
-                if (ks.IsKeyDown(Keys.Right))
-                {
-                    camera.X -= 200 * elapsed;
-                }
-                if (ks.IsKeyDown(Keys.Up))
-                {
-                    camera.Y += 200 * elapsed;
-                }
-                if (ks.IsKeyDown(Keys.Down))
-                {
-                    camera.Y -= 200 * elapsed;
-                }
             }
             // TODO: Add your update logic here
 
@@ -201,7 +182,6 @@ namespace TowerDefense
                 Level.Draw(gameTime, spriteBatch);
             }
 
-            grid.Draw(gameTime, spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -15,11 +15,13 @@ namespace SnudsLib
     {
         Game game;
         int cell;
-        public GridTexture(Game game, int cellSize)
+        Camera camera;
+        public GridTexture(Game game, Camera camera, int cellSize)
             : base(game)
         {
             this.game = game;
             cell = cellSize;
+            this.camera = camera;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch sb)
@@ -30,7 +32,12 @@ namespace SnudsLib
             {
                 for (int x = 0; x < game.GraphicsDevice.Viewport.Width / cell; x++)
                 {
-                    sb.Draw(texture, new Vector2(x * cell, y * cell), Color.Black);
+                    Vector2 position = new Vector2(x * cell, y * cell);
+                    if (camera != null)
+                    {
+                        position += new Vector2(camera.Position.X % cell, camera.Position.Y % cell);
+                    }
+                    sb.Draw(texture,position, Color.Black);
                 }
             }
         }

@@ -66,7 +66,7 @@ namespace TowerDefense
         {
             foreach (Tower t in towers)
             {
-                sb.Draw(t.s.Texture, t.DestinationRectangle, t.s.SourceRec, Color.White);
+                sb.Draw(t.s.Texture, game.Level.Camera.offset(t.DestinationRectangle), t.s.SourceRec, Color.White);
             }
         }
 

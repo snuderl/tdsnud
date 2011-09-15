@@ -117,26 +117,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SnudsLib.dll" size="8192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SnudsLib.dll" size="9728">
       <assemblyIdentity name="SnudsLib" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9ZjR9ZasLF0yGQECJURN+C/cn8o=</dsig:DigestValue>
+        <dsig:DigestValue>UvWQrsPJrurry3lNavNs9jwBIJ8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="35328">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="35840">
       <assemblyIdentity name="TowerDefense" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>UkzFRPTg5opCjCa+3DbV4vWPBBs=</dsig:DigestValue>
+        <dsig:DigestValue>/t8PeX/4aqIUIFH2M4bx9PPqeqQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

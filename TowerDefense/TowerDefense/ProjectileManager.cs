@@ -55,7 +55,7 @@ namespace TowerDefense
         {
             foreach (Projectile s in shoots)
             {
-                spriteBatch.Draw(s.sprite.Texture, s.destinationRectangle, s.sprite.SourceRec, Color.White, s.rotation, s.origin, SpriteEffects.None, 1);
+                spriteBatch.Draw(s.sprite.Texture, game.Level.Camera.offset(s.destinationRectangle), s.sprite.SourceRec, Color.White, s.rotation, s.origin, SpriteEffects.None, 1);
             }
         }
     }
