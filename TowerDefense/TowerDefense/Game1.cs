@@ -137,7 +137,7 @@ namespace TowerDefense
 
                 if (level.finished == true)
                 {
-                    level.Pause(gameTime);
+                    level.Pause();
                     if (ks.IsKeyDown(Keys.Enter))
                     {
                         if (level.Won)
@@ -152,6 +152,7 @@ namespace TowerDefense
                             }
                             else
                             {
+                                //If there is no next level
                                 level = null;
                             }
                         }

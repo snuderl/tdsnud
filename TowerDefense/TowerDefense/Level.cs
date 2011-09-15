@@ -106,6 +106,7 @@ namespace TowerDefense
             AddComponent(spawner);
             spawner.Reset();
             se = game.music.CreateInstance();
+            se.IsLooped = true;
             se.Play();
         }
 
@@ -120,7 +121,10 @@ namespace TowerDefense
             se.Stop(true);
         }
 
-        public void Pause(GameTime gameTime)
+        /// <summary>
+        /// Pauses the game
+        /// </summary>
+        public void Pause()
         {
             foreach (GameComponent c in componentList)
             {
@@ -128,18 +132,22 @@ namespace TowerDefense
 
             }
             Paused = true;
-            pauseStart = gameTime.TotalGameTime;
             se.Pause();
         }
 
-        public void UnPause(GameTime gameTime)
+
+
+        /// <summary>
+        /// Resumes the game
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public void UnPause()
         {
             foreach (GameComponent c in componentList)
             {
                 c.Enabled = true;
             }
             Paused = false;
-            totalPauseTime = gameTime.TotalGameTime - pauseStart;
             se.Resume();
         }
 
@@ -162,11 +170,11 @@ namespace TowerDefense
                 MouseState ms = Mouse.GetState();
                 if (ks.IsKeyDown(Keys.Space))
                 {
-                    Pause(gameTime);
+                    Pause();
                 }
                 if (ks.IsKeyDown(Keys.O))
                 {
-                    UnPause(gameTime);
+                    UnPause();
                 }
                 if (!Paused)
                 {

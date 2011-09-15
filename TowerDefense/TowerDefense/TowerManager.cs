@@ -27,6 +27,9 @@ namespace TowerDefense
             towerList = new List<Tower>();
         }
 
+
+        #region Override
+
         public override void Update(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -54,13 +57,36 @@ namespace TowerDefense
             base.Update(gameTime);
         }
 
-        public Enemy findClosestEnemy(Tower t)
+        public override void Initialize()
+        {
+            base.Initialize();
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch sb)
+        {
+            foreach (Tower t in towers)
+            {
+                sb.Draw(t.s.Texture, t.DestinationRectangle, t.s.SourceRec, Color.White);
+            }
+        }
+
+
+        #endregion
+
+        #region CustomMethods
+
+        /// <summary>
+        /// Returns enemy closest to the tower
+        /// </summary>
+        /// <param name="Tower"></param>
+        /// <returns></returns>
+        public Enemy findClosestEnemy(Tower tower)
         {
             double radius = 1000;
             Enemy selected=null;
             foreach(Enemy e in game.Level.EnemyManager.enemies)
             {
-                double r = Radius(t, e);
+                double r = Radius(tower, e);
                 if (r < radius)
                 {
                     selected = e;
@@ -70,11 +96,22 @@ namespace TowerDefense
             return selected;
         }
 
-        public double Radius(Tower t, Enemy e)
+
+        /// <summary>
+        /// Returns distance beetwen enemy and tower
+        /// </summary>
+        /// <param name="Tower"></param>
+        /// <param name="Enemy"></param>
+        /// <returns></returns>
+        public double Radius(Tower tower, Enemy enemy)
         {
-            return Math.Sqrt(Math.Pow(e.position.X - t.position.X, 2) + Math.Pow(e.position.Y - t.position.Y, 2));
+            return Math.Sqrt(Math.Pow(enemy.position.X - tower.position.X, 2) + Math.Pow(enemy.position.Y - tower.position.Y, 2));
         }
 
+
+        /// <summary>
+        /// Loads tower managers resources
+        /// </summary>
         public void Load()
         {
             Projectile s = game.loader.projectileDict[1];
@@ -89,9 +126,14 @@ namespace TowerDefense
             towerList.Add(t);
         }
 
-        public void Build(Vector2 position, Tower clonable)
+        /// <summary>
+        /// Construsts selected tower at selected location
+        /// </summary>
+        /// <param name="Position"></param>
+        /// <param name="Tower"></param>
+        public void Build(Vector2 position, Tower tower)
         {
-            Tower t = (Tower)clonable.Clone();
+            Tower t = (Tower)tower.Clone();
             t.position = position;
             towers.Add(t);
 
@@ -100,18 +142,9 @@ namespace TowerDefense
             game.money -= t.cost;
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
+        #endregion
 
-        public void Draw(GameTime gameTime, SpriteBatch sb)
-        {
-            foreach (Tower t in towers)
-            {
-                sb.Draw(t.s.Texture, t.DestinationRectangle, t.s.SourceRec, Color.White);
-            }
-        }
+
 
 
 
