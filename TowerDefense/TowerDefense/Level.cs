@@ -184,6 +184,19 @@ namespace TowerDefense
         }
         #endregion
 
+        private Enemy isEnemyOnLocation(Rectangle selected)
+        {
+            foreach (Enemy e in EnemyManager.enemies)
+            {
+                Rectangle rec = e.destinationRectangle;
+                if (selected.Intersects(rec))
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
         #region Override
         public override void Update(GameTime gameTime)
         {
@@ -249,20 +262,17 @@ namespace TowerDefense
                     else if (mode == Mode.normal && ButtonState.Pressed == ms.LeftButton)
                     {
                         Rectangle mouse = new Rectangle(ms.X - 2, ms.Y - 2, 4, 4);
-                        foreach (Enemy e in EnemyManager.enemies)
+                        selected = isEnemyOnLocation(mouse);
+
+                        if (selected == null)
                         {
-                            Rectangle rec = e.destinationRectangle;
-                            if (mouse.Intersects(rec))
+                            foreach (Tower t in towerManager.towers)
                             {
-                                selected = e;
-                            }
-                        }
-                        foreach (Tower t in towerManager.towers)
-                        {
-                            Rectangle rec = t.DestinationRectangle;
-                            if (mouse.Intersects(rec))
-                            {
-                                selected = t;
+                                Rectangle rec = t.DestinationRectangle;
+                                if (mouse.Intersects(rec))
+                                {
+                                    selected = t;
+                                }
                             }
                         }
                     }
@@ -375,6 +385,26 @@ namespace TowerDefense
                     if (selected != null)
                     {
                         selected.Draw(gameTime, spriteBatch, game.sf);
+                    }
+                    MouseState ms = Mouse.GetState();
+                    Enemy e = isEnemyOnLocation(new Rectangle(ms.X, ms.Y, 6, 6));
+                    if (e != null)
+                    {
+
+                        //Draw circle around targeted
+
+
+                        //Draw the negative space for the health bar
+                        spriteBatch.Draw(game.health, new Rectangle(ms.X,
+                ms.Y, game.health.Width / 6, 44 / 6), new Rectangle(0, 45, game.health.Width, 44), Color.Gray);
+                        //Draw the current health level based on the current Health
+                        spriteBatch.Draw(game.health, new Rectangle(ms.X,
+                             ms.Y, (int)(game.health.Width / 6 * ((double)e.health / e.MaxHealth)), 44 / 6),
+                             new Rectangle(0, 45, game.health.Width, 44), Color.Red);
+
+                        //Draw the box around the health bar
+                        spriteBatch.Draw(game.health, new Rectangle(ms.X,
+                            ms.Y, game.health.Width / 6, 44 / 6), new Rectangle(0, 0, game.health.Width, 44), Color.White);
                     }
                 }
 

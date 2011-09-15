@@ -26,6 +26,7 @@ namespace TowerDefense
         public int speed;
         public float rotation;
         public Vector2 origin { get { return new Vector2(drawSize, drawSize) / 2; } }
+        public int MaxHealth { get; set; }
 
         public Rectangle destinationRectangle { get { return new Rectangle((int)position.X, (int)position.Y, drawSize, drawSize); } }
         public Point CellCoords
@@ -62,6 +63,7 @@ namespace TowerDefense
             this.drawSize=drawSize;
             this.rotation=rotation;
             this.speed = speed;
+            MaxHealth = health;
         }
 
         public object Clone()

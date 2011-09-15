@@ -129,14 +129,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="38400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerDefense.exe" size="38912">
       <assemblyIdentity name="TowerDefense" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wKQi3LrFR5IFJ3wpTRxSwjDt58s=</dsig:DigestValue>
+        <dsig:DigestValue>G7J/gf8vaP+IMeK3Vg1/T0Pke9c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -237,6 +237,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>VgAinbiDkRXfQW1MLHLmXIsf0U8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Content\Textures\HealthBar2.xnb" size="162703">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>7kUZJd/zyNVuuVFaMWtAdPrusp0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Content\Textures\thumb_Fireball.xnb" size="73387">

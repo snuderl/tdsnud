@@ -41,6 +41,7 @@ namespace TowerDefense
         public SoundEffect music;
         public Texture2D mountain;
         public Dictionary<String, Rectangle> sourceRectDict;
+        public Texture2D health;
 
 
 
@@ -96,6 +97,7 @@ namespace TowerDefense
             se = Content.Load<SoundEffect>(@"Audio/fire_laser1");
             music = Content.Load<SoundEffect>(@"Audio/Theme");
             mountain = Content.Load<Texture2D>(@"Textures/004-Mountain01");
+            health = Content.Load<Texture2D>(@"Textures/HealthBar2");
             // TODO: use this.Content to load your game content here
             XmlDocument doc = new XmlDocument();
             doc.Load("test.xml");

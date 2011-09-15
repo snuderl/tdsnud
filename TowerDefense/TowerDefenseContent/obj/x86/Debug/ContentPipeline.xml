@@ -136,6 +136,15 @@
       <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\tdsnud\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\004-Mountain01.xnb</Output>
       <Time>2011-09-15T17:38:35.3542286+02:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\HealthBar2.png</Source>
+      <Name>Textures\HealthBar2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Snuderl\Documents\Visual Studio 2010\Projects\TowerDefense\tdsnud\TowerDefense\TowerDefense\bin\x86\Debug\Content\Textures\HealthBar2.xnb</Output>
+      <Time>2011-09-15T22:05:44.1523195+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
