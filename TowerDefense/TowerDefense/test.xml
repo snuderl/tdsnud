@@ -68,21 +68,33 @@
       <rotation>0</rotation>
       <speed>100</speed>
     </Enemy>
+    <Enemy id="2">
+      <health>500</health>
+      <name>Creep2</name>
+      <Sprite>3</Sprite>
+      <drawSize>40</drawSize>
+      <rotation>0</rotation>
+      <speed>150</speed>
+    </Enemy>
   </Enemies>
 
   <Level id="1">
     <map>
-      <rows>12</rows>
-      <columns>12</columns>
+      <rows>20</rows>
+      <columns>20</columns>
     </map>
     <end>
       <x>9</x>
       <y>9</y>
     </end>
+    <Tower>1</Tower>
     <Tower>2</Tower>
     <Tower>3</Tower>
     <SpawnPoint>1</SpawnPoint>
     <SpawnPoint>2</SpawnPoint>
+    <SpawnPoint>3</SpawnPoint>
+    <SpawnPoint>4</SpawnPoint>
+    <SpawnPoint>5</SpawnPoint>
   </Level>
   
   <Level id="2">
@@ -115,6 +127,29 @@
     <delay>1</delay>
     <numToSpawn>20</numToSpawn>
     <Enemy>1</Enemy>
-    <Tower>1</Tower>
+  </SpawnPoint>
+  <SpawnPoint id="3">
+    <positionX>20</positionX>
+    <positionY>100</positionY>
+    <interval>0,9</interval>
+    <delay>1</delay>
+    <numToSpawn>20</numToSpawn>
+    <Enemy>1</Enemy>
+  </SpawnPoint>
+  <SpawnPoint id="4">
+    <positionX>20</positionX>
+    <positionY>100</positionY>
+    <interval>0,9</interval>
+    <delay>10</delay>
+    <numToSpawn>20</numToSpawn>
+    <Enemy>2</Enemy>
+  </SpawnPoint>
+  <SpawnPoint id="5">
+    <positionX>20</positionX>
+    <positionY>100</positionY>
+    <interval>0,9</interval>
+    <delay>20</delay>
+    <numToSpawn>20</numToSpawn>
+    <Enemy>2</Enemy>
   </SpawnPoint>
 </TowerDefence>

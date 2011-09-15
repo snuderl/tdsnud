@@ -230,7 +230,7 @@ namespace TowerDefense
                             //Preveri ce se nahaja na mapi
                             if (xCoord >= 0 && (xCoord) <= (map[0].Length-1) && yCoord >= 0 && (yCoord) <= (map.Length-1))
                             {
-                                Point mousePosition = new Point(xCoord, y / yCoord);
+                                Point mousePosition = new Point(xCoord, yCoord);
                                 if (ObjectMap[mousePosition.Y][mousePosition.X] == null && !EnemyManager.isEnemyOnIt(mousePosition) && game.money >= Building.cost)
                                 {
                                     towerManager.Build(new Vector2(x, y), Building);
