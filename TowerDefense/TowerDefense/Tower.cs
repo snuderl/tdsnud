@@ -28,6 +28,9 @@ namespace TowerDefense
         public int cost;
         public int damage;
         public Projectile projectile;
+        public Vector2 origin { get { return new Vector2(cellSize, cellSize) / 2; } }
+        public float radius { get { return DestinationRectangle.Width / 2; } }
+        public Vector2 center { get { return position + origin; } }
         public Point CellCoords
         {
             get

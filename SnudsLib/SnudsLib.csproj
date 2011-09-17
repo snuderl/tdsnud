@@ -96,6 +96,7 @@
     <Compile Include="DisplayHelper.cs" />
     <Compile Include="MathFunctions.cs" />
     <Compile Include="Pathfinding.cs" />
+    <Compile Include="PrimitiveLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -27,6 +27,8 @@ namespace TowerDefense
         public float rotation;
         public Vector2 origin { get { return new Vector2(drawSize, drawSize) / 2; } }
         public int MaxHealth { get; set; }
+        public float radius { get { return destinationRectangle.Width / 2; } }
+        public Vector2 center { get {return position;}}
 
         public Rectangle destinationRectangle { get { return new Rectangle((int)position.X, (int)position.Y, drawSize, drawSize); } }
         public Point CellCoords

@@ -346,7 +346,7 @@ namespace TowerDefense
             ProjectileManager.Draw(gameTime, spriteBatch);
             spawner.Draw(spriteBatch);
 
-            //grid.Draw(gameTime, spriteBatch);
+            grid.Draw(gameTime, spriteBatch);
 
             if (!Paused)
             {
@@ -385,6 +385,10 @@ namespace TowerDefense
                     if (selected != null)
                     {
                         selected.Draw(gameTime, spriteBatch, game.sf);
+                        PrimitiveLine pl = new PrimitiveLine(game.GraphicsDevice);
+                        pl.CreateCircle(selected.radius + 5, 40);
+                        pl.Position = selected.center;
+                        pl.Render(spriteBatch);
                     }
                     MouseState ms = Mouse.GetState();
                     Enemy e = isEnemyOnLocation(new Rectangle(ms.X, ms.Y, 6, 6));
@@ -392,19 +396,11 @@ namespace TowerDefense
                     {
 
                         //Draw circle around targeted
-
-
-                        //Draw the negative space for the health bar
-                        spriteBatch.Draw(game.health, new Rectangle(ms.X,
-                ms.Y, game.health.Width / 6, 44 / 6), new Rectangle(0, 45, game.health.Width, 44), Color.Gray);
-                        //Draw the current health level based on the current Health
-                        spriteBatch.Draw(game.health, new Rectangle(ms.X,
-                             ms.Y, (int)(game.health.Width / 6 * ((double)e.health / e.MaxHealth)), 44 / 6),
-                             new Rectangle(0, 45, game.health.Width, 44), Color.Red);
-
-                        //Draw the box around the health bar
-                        spriteBatch.Draw(game.health, new Rectangle(ms.X,
-                            ms.Y, game.health.Width / 6, 44 / 6), new Rectangle(0, 0, game.health.Width, 44), Color.White);
+                        PrimitiveLine pl = new PrimitiveLine(game.GraphicsDevice);
+                        pl.CreateCircle(e.radius + 5, 40);
+                        pl.Position = e.center;
+                        pl.Render(spriteBatch);
+                        DrawHealthBar(spriteBatch, e, new Point(ms.X, ms.Y), 40, 10);
                     }
                 }
 
@@ -425,6 +421,24 @@ namespace TowerDefense
                 spriteBatch.DrawString(game.sf, text, new Vector2(300, 300), Color.White);
             }
         }
+
+        public void DrawHealthBar(SpriteBatch spriteBatch, Enemy enemy, Point position, int width, int height)
+        {
+            float heightMultiplier = (float)height / game.health.Height;
+            float widthMuliplier = (float)44 / game.health.Width;
+            //Draw the negative space for the health bar
+            spriteBatch.Draw(game.health, new Rectangle(position.X,
+    position.Y, (int)(game.health.Width * widthMuliplier), (int)(44 * heightMultiplier)), new Rectangle(0, 45, game.health.Width, 44), Color.Gray);
+            //Draw the current health level based on the current Health
+            spriteBatch.Draw(game.health, new Rectangle(position.X,
+                 position.Y, (int)(game.health.Width * widthMuliplier * ((double)enemy.health / enemy.MaxHealth)), (int)(44 * heightMultiplier)),
+                 new Rectangle(0, 45, game.health.Width, 44), Color.Red);
+
+            //Draw the box around the health bar
+            spriteBatch.Draw(game.health, new Rectangle(position.X,
+                position.Y, (int)(game.health.Width *widthMuliplier), (int)(44 * heightMultiplier)), new Rectangle(0, 0, game.health.Width, 44), Color.White);
+        }
+
 
 
         public Level(TowerDefense game, int cellSize, int rows, int columns, Point end, List<Wave> waves, int id)

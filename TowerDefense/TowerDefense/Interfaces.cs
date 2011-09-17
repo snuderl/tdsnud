@@ -15,6 +15,9 @@ namespace TowerDefense
     public interface IGui
     {
         void Draw(GameTime gameTime, SpriteBatch sb, SpriteFont sf);
+
+        float radius { get; }
+        Vector2 center { get; }
     }
     public interface IObject
     {
@@ -26,6 +29,7 @@ namespace TowerDefense
         {
             get;
         }
+
     }
 
     public class End : IObject
