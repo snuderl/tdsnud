@@ -31,7 +31,7 @@ namespace TowerDefense
             this.spritesPerSecond = spritesPerSecond;
 
             createAnimations();
-            updateInterval = 1 / spritesPerSecond;
+            updateInterval = 1f / spritesPerSecond;
         }
 
 

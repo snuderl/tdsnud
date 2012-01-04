@@ -24,7 +24,7 @@
       <resourceName>enemy</resourceName>
       <width>32</width>
       <height>32</height>
-      <spritesPerSecond>3</spritesPerSecond>
+      <spritesPerSecond>10</spritesPerSecond>
     </Sprite>
   </Sprites>
   <Projectiles>

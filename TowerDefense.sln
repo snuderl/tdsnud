@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefenseContent", "Towe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnudsLib", "SnudsLib\SnudsLib.csproj", "{C0789D92-34E6-4F66-860C-7695D99BFED8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{39D795B7-1C71-416A-B5CE-71BE5E538054}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -23,6 +25,10 @@ Global
 		{C0789D92-34E6-4F66-860C-7695D99BFED8}.Debug|x86.Build.0 = Debug|x86
 		{C0789D92-34E6-4F66-860C-7695D99BFED8}.Release|x86.ActiveCfg = Release|x86
 		{C0789D92-34E6-4F66-860C-7695D99BFED8}.Release|x86.Build.0 = Release|x86
+		{39D795B7-1C71-416A-B5CE-71BE5E538054}.Debug|x86.ActiveCfg = Debug|x86
+		{39D795B7-1C71-416A-B5CE-71BE5E538054}.Debug|x86.Build.0 = Debug|x86
+		{39D795B7-1C71-416A-B5CE-71BE5E538054}.Release|x86.ActiveCfg = Release|x86
+		{39D795B7-1C71-416A-B5CE-71BE5E538054}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

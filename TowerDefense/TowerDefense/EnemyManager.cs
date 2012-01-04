@@ -52,10 +52,11 @@ namespace TowerDefense
                 }
                 e.position += direction * e.speed * elapsed;
                 e.rotation = MathFunctions.angleFromX(direction);
-                if (direction.X < 0 || direction.Y < 0)
+                if (direction.Y < 0)
                 {
-                    e.rotation = ((float)Math.PI * 2) - e.rotation;
+                    e.rotation = (float)Math.PI * 2 - e.rotation;
                 }
+
                 e.animated.Update(gameTime);
 
             }
